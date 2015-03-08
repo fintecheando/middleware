@@ -1,3 +1,4 @@
+<%@ include file="main.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
