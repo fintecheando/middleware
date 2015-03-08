@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.SResourcetype" table="s_resourcetype" schema="adempiere">
+        <id name="SResourcetypeId" type="long">
+            <column name="s_resourcetype_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="CUom" class="com.mx.nibble.domain.CUom" fetch="select">
+            <column name="c_uom_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="MProductCategory" class="com.mx.nibble.domain.MProductCategory" fetch="select">
+            <column name="m_product_category_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="CTaxcategory" class="com.mx.nibble.domain.CTaxcategory" fetch="select">
+            <column name="c_taxcategory_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="40" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="issingleassignment" type="char">
+            <column name="issingleassignment" length="1" not-null="true" />
+        </property>
+        <property name="allowuomfractions" type="char">
+            <column name="allowuomfractions" length="1" not-null="true" />
+        </property>
+        <property name="timeslotstart" type="timestamp">
+            <column name="timeslotstart" length="29" />
+        </property>
+        <property name="timeslotend" type="timestamp">
+            <column name="timeslotend" length="29" />
+        </property>
+        <property name="istimeslot" type="char">
+            <column name="istimeslot" length="1" not-null="true" />
+        </property>
+        <property name="isdateslot" type="char">
+            <column name="isdateslot" length="1" not-null="true" />
+        </property>
+        <property name="onsunday" type="char">
+            <column name="onsunday" length="1" not-null="true" />
+        </property>
+        <property name="onmonday" type="char">
+            <column name="onmonday" length="1" not-null="true" />
+        </property>
+        <property name="ontuesday" type="char">
+            <column name="ontuesday" length="1" not-null="true" />
+        </property>
+        <property name="onwednesday" type="char">
+            <column name="onwednesday" length="1" not-null="true" />
+        </property>
+        <property name="onthursday" type="char">
+            <column name="onthursday" length="1" not-null="true" />
+        </property>
+        <property name="onfriday" type="char">
+            <column name="onfriday" length="1" not-null="true" />
+        </property>
+        <property name="onsaturday" type="char">
+            <column name="onsaturday" length="1" not-null="true" />
+        </property>
+        <property name="chargeableqty" type="big_decimal">
+            <column name="chargeableqty" precision="131089" scale="0" />
+        </property>
+        <set name="SResources" table="s_resource" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="s_resourcetype_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.SResource" />
+        </set>
+    </class>
+</hibernate-mapping>

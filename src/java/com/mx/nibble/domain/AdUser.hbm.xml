@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdUser" table="ad_user" schema="adempiere">
+        <id name="adUserId" type="long">
+            <column name="ad_user_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="CJob" class="com.mx.nibble.domain.CJob" fetch="select">
+            <column name="c_job_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="CGreeting" class="com.mx.nibble.domain.CGreeting" fetch="select">
+            <column name="c_greeting_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="CBpartner" class="com.mx.nibble.domain.CBpartner" fetch="select">
+            <column name="c_bpartner_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="CBpartnerLocation" class="com.mx.nibble.domain.CBpartnerLocation" fetch="select">
+            <column name="c_bpartner_location_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adOrgByAdOrgtrxId" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_orgtrx_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adOrgByAdOrgId" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adUser" class="com.mx.nibble.domain.AdUser" fetch="select">
+            <column name="supervisor_id" precision="10" scale="0" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="40" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="60" />
+        </property>
+        <property name="processing" type="java.lang.Character">
+            <column name="processing" length="1" />
+        </property>
+        <property name="emailuser" type="string">
+            <column name="emailuser" length="60" />
+        </property>
+        <property name="emailuserpw" type="string">
+            <column name="emailuserpw" />
+        </property>
+        <property name="title" type="string">
+            <column name="title" length="40" />
+        </property>
+        <property name="comments" type="string">
+            <column name="comments" length="2000" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="40" />
+        </property>
+        <property name="phone2" type="string">
+            <column name="phone2" length="40" />
+        </property>
+        <property name="fax" type="string">
+            <column name="fax" length="40" />
+        </property>
+        <property name="lastcontact" type="timestamp">
+            <column name="lastcontact" length="29" />
+        </property>
+        <property name="lastresult" type="string">
+            <column name="lastresult" />
+        </property>
+        <property name="birthday" type="timestamp">
+            <column name="birthday" length="29" />
+        </property>
+        <property name="emailverify" type="string">
+            <column name="emailverify" length="40" />
+        </property>
+        <property name="emailverifydate" type="timestamp">
+            <column name="emailverifydate" length="29" />
+        </property>
+        <property name="notificationtype" type="char">
+            <column name="notificationtype" length="1" not-null="true" />
+        </property>
+        <property name="isfullbpaccess" type="char">
+            <column name="isfullbpaccess" length="1" not-null="true" />
+        </property>
+        <property name="ldapuser" type="string">
+            <column name="ldapuser" length="60" />
+        </property>
+        <property name="connectionprofile" type="java.lang.Character">
+            <column name="connectionprofile" length="1" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="40" />
+        </property>
+        <property name="userpin" type="string">
+            <column name="userpin" length="20" />
+        </property>
+        <property name="isinpayroll" type="char">
+            <column name="isinpayroll" length="1" not-null="true" />
+        </property>
+        <set name="adWorkflowprocessors" table="ad_workflowprocessor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="supervisor_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWorkflowprocessor" />
+        </set>
+        <set name="adRoles" table="ad_role" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="supervisor_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdRole" />
+        </set>
+        <set name="CBpartners" table="c_bpartner" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="salesrep_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartner" />
+        </set>
+        <set name="adUserOrgaccesses" table="ad_user_orgaccess" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_user_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdUserOrgaccess" />
+        </set>
+        <set name="adUserRoleses" table="ad_user_roles" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_user_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdUserRoles" />
+        </set>
+        <set name="CSalesregions" table="c_salesregion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="salesrep_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CSalesregion" />
+        </set>
+        <set name="adUsers" table="ad_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="supervisor_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdUser" />
+        </set>
+        <set name="adWfResponsibles" table="ad_wf_responsible" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_user_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfResponsible" />
+        </set>
+        <set name="SResources" table="s_resource" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_user_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.SResource" />
+        </set>
+    </class>
+</hibernate-mapping>

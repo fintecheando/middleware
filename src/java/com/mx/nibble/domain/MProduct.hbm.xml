@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.MProduct" table="m_product" schema="adempiere">
+        <id name="MProductId" type="long">
+            <column name="m_product_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="510" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="documentnote" type="string">
+            <column name="documentnote" length="2000" />
+        </property>
+        <property name="help" type="string">
+            <column name="help" length="2000" />
+        </property>
+        <property name="upc" type="string">
+            <column name="upc" length="30" />
+        </property>
+        <property name="sku" type="string">
+            <column name="sku" length="30" />
+        </property>
+        <property name="CUomId" type="long">
+            <column name="c_uom_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="salesrepId" type="java.lang.Long">
+            <column name="salesrep_id" precision="10" scale="0" />
+        </property>
+        <property name="issummary" type="char">
+            <column name="issummary" length="1" not-null="true" />
+        </property>
+        <property name="isstocked" type="char">
+            <column name="isstocked" length="1" not-null="true" />
+        </property>
+        <property name="ispurchased" type="char">
+            <column name="ispurchased" length="1" not-null="true" />
+        </property>
+        <property name="issold" type="char">
+            <column name="issold" length="1" not-null="true" />
+        </property>
+        <property name="isbom" type="char">
+            <column name="isbom" length="1" not-null="true" />
+        </property>
+        <property name="isinvoiceprintdetails" type="char">
+            <column name="isinvoiceprintdetails" length="1" not-null="true" />
+        </property>
+        <property name="ispicklistprintdetails" type="char">
+            <column name="ispicklistprintdetails" length="1" not-null="true" />
+        </property>
+        <property name="isverified" type="char">
+            <column name="isverified" length="1" not-null="true" />
+        </property>
+        <property name="CRevenuerecognitionId" type="java.lang.Long">
+            <column name="c_revenuerecognition_id" precision="10" scale="0" />
+        </property>
+        <property name="MProductCategoryId" type="long">
+            <column name="m_product_category_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="classification" type="string">
+            <column name="classification" length="12" />
+        </property>
+        <property name="volume" type="big_decimal">
+            <column name="volume" precision="131089" scale="0" />
+        </property>
+        <property name="weight" type="big_decimal">
+            <column name="weight" precision="131089" scale="0" />
+        </property>
+        <property name="shelfwidth" type="java.lang.Long">
+            <column name="shelfwidth" precision="10" scale="0" />
+        </property>
+        <property name="shelfheight" type="big_decimal">
+            <column name="shelfheight" precision="131089" scale="0" />
+        </property>
+        <property name="shelfdepth" type="java.lang.Long">
+            <column name="shelfdepth" precision="10" scale="0" />
+        </property>
+        <property name="unitsperpallet" type="big_decimal">
+            <column name="unitsperpallet" precision="131089" scale="0" />
+        </property>
+        <property name="CTaxcategoryId" type="long">
+            <column name="c_taxcategory_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="SResourceId" type="java.lang.Long">
+            <column name="s_resource_id" precision="10" scale="0" unique="true" />
+        </property>
+        <property name="discontinued" type="java.lang.Character">
+            <column name="discontinued" length="1" />
+        </property>
+        <property name="discontinuedby" type="timestamp">
+            <column name="discontinuedby" length="29" />
+        </property>
+        <property name="processing" type="java.lang.Character">
+            <column name="processing" length="1" />
+        </property>
+        <property name="SExpensetypeId" type="java.lang.Long">
+            <column name="s_expensetype_id" precision="10" scale="0" unique="true" />
+        </property>
+        <property name="producttype" type="char">
+            <column name="producttype" length="1" not-null="true" />
+        </property>
+        <property name="imageurl" type="string">
+            <column name="imageurl" length="120" />
+        </property>
+        <property name="descriptionurl" type="string">
+            <column name="descriptionurl" length="120" />
+        </property>
+        <property name="guaranteedays" type="java.lang.Long">
+            <column name="guaranteedays" precision="10" scale="0" />
+        </property>
+        <property name="RMailtextId" type="java.lang.Long">
+            <column name="r_mailtext_id" precision="10" scale="0" />
+        </property>
+        <property name="versionno" type="string">
+            <column name="versionno" length="20" />
+        </property>
+        <property name="MAttributesetId" type="java.lang.Long">
+            <column name="m_attributeset_id" precision="10" scale="0" />
+        </property>
+        <property name="MAttributesetinstanceId" type="java.lang.Long">
+            <column name="m_attributesetinstance_id" precision="10" scale="0" />
+        </property>
+        <property name="downloadurl" type="string">
+            <column name="downloadurl" length="120" />
+        </property>
+        <property name="MFreightcategoryId" type="java.lang.Long">
+            <column name="m_freightcategory_id" precision="10" scale="0" />
+        </property>
+        <property name="MLocatorId" type="java.lang.Long">
+            <column name="m_locator_id" precision="10" scale="0" />
+        </property>
+        <property name="guaranteedaysmin" type="java.lang.Long">
+            <column name="guaranteedaysmin" precision="10" scale="0" />
+        </property>
+        <property name="iswebstorefeatured" type="char">
+            <column name="iswebstorefeatured" length="1" not-null="true" />
+        </property>
+        <property name="isselfservice" type="char">
+            <column name="isselfservice" length="1" not-null="true" />
+        </property>
+        <property name="CSubscriptiontypeId" type="java.lang.Long">
+            <column name="c_subscriptiontype_id" precision="10" scale="0" />
+        </property>
+        <property name="isdropship" type="char">
+            <column name="isdropship" length="1" not-null="true" />
+        </property>
+        <property name="isexcludeautodelivery" type="char">
+            <column name="isexcludeautodelivery" length="1" not-null="true" />
+        </property>
+        <property name="group1" type="string">
+            <column name="group1" />
+        </property>
+        <property name="group2" type="string">
+            <column name="group2" />
+        </property>
+        <property name="istoformule" type="java.lang.Character">
+            <column name="istoformule" length="1" />
+        </property>
+        <property name="lowlevel" type="long">
+            <column name="lowlevel" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="unitsperpack" type="long">
+            <column name="unitsperpack" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="discontinuedat" type="timestamp">
+            <column name="discontinuedat" length="29" />
+        </property>
+        <property name="copyfrom" type="java.lang.Character">
+            <column name="copyfrom" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

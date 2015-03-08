@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdColumn" table="ad_column" schema="adempiere">
+        <id name="adColumnId" type="long">
+            <column name="ad_column_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="version" type="big_decimal">
+            <column name="version" precision="131089" scale="0" not-null="true" />
+        </property>
+        <many-to-one name="adTable" class="com.mx.nibble.domain.AdTable" fetch="select">
+            <column name="ad_table_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adReferenceByAdReferenceId" class="com.mx.nibble.domain.AdReference" fetch="select">
+            <column name="ad_reference_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adProcess" class="com.mx.nibble.domain.AdProcess" fetch="select">
+            <column name="ad_process_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adValRule" class="com.mx.nibble.domain.AdValRule" fetch="select">
+            <column name="ad_val_rule_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adElement" class="com.mx.nibble.domain.AdElement" fetch="select">
+            <column name="ad_element_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adEntitytype" class="com.mx.nibble.domain.AdEntitytype" fetch="select">
+            <column name="entitytype" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adReferenceByAdReferenceValueId" class="com.mx.nibble.domain.AdReference" fetch="select">
+            <column name="ad_reference_value_id" precision="10" scale="0" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="help" type="string">
+            <column name="help" length="2000" />
+        </property>
+        <property name="columnname" type="string">
+            <column name="columnname" length="30" not-null="true" />
+        </property>
+        <property name="fieldlength" type="java.lang.Long">
+            <column name="fieldlength" precision="10" scale="0" />
+        </property>
+        <property name="defaultvalue" type="string">
+            <column name="defaultvalue" length="2000" />
+        </property>
+        <property name="iskey" type="char">
+            <column name="iskey" length="1" not-null="true" />
+        </property>
+        <property name="isparent" type="char">
+            <column name="isparent" length="1" not-null="true" />
+        </property>
+        <property name="ismandatory" type="char">
+            <column name="ismandatory" length="1" not-null="true" />
+        </property>
+        <property name="isupdateable" type="char">
+            <column name="isupdateable" length="1" not-null="true" />
+        </property>
+        <property name="readonlylogic" type="string">
+            <column name="readonlylogic" length="2000" />
+        </property>
+        <property name="isidentifier" type="char">
+            <column name="isidentifier" length="1" not-null="true" />
+        </property>
+        <property name="seqno" type="java.lang.Long">
+            <column name="seqno" precision="10" scale="0" />
+        </property>
+        <property name="istranslated" type="char">
+            <column name="istranslated" length="1" not-null="true" />
+        </property>
+        <property name="isencrypted" type="char">
+            <column name="isencrypted" length="1" not-null="true" />
+        </property>
+        <property name="callout" type="string">
+            <column name="callout" />
+        </property>
+        <property name="vformat" type="string">
+            <column name="vformat" length="60" />
+        </property>
+        <property name="valuemin" type="string">
+            <column name="valuemin" length="20" />
+        </property>
+        <property name="valuemax" type="string">
+            <column name="valuemax" length="20" />
+        </property>
+        <property name="isselectioncolumn" type="char">
+            <column name="isselectioncolumn" length="1" not-null="true" />
+        </property>
+        <property name="issyncdatabase" type="java.lang.Character">
+            <column name="issyncdatabase" length="1" />
+        </property>
+        <property name="isalwaysupdateable" type="char">
+            <column name="isalwaysupdateable" length="1" not-null="true" />
+        </property>
+        <property name="columnsql" type="string">
+            <column name="columnsql" length="2000" />
+        </property>
+        <property name="mandatorylogic" type="string">
+            <column name="mandatorylogic" length="2000" />
+        </property>
+        <property name="infofactoryclass" type="string">
+            <column name="infofactoryclass" />
+        </property>
+        <property name="isautocomplete" type="char">
+            <column name="isautocomplete" length="1" not-null="true" />
+        </property>
+        <property name="isallowlogging" type="java.lang.Character">
+            <column name="isallowlogging" length="1" />
+        </property>
+        <property name="formatpattern" type="string">
+            <column name="formatpattern" length="22" />
+        </property>
+        <set name="adWfNodes" table="ad_wf_node" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_column_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfNode" />
+        </set>
+        <set name="adWorkbenches" table="ad_workbench" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_column_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWorkbench" />
+        </set>
+    </class>
+</hibernate-mapping>

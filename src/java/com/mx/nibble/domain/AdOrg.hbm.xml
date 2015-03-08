@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdOrg" table="ad_org" schema="adempiere">
+        <id name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adReplicationstrategy" class="com.mx.nibble.domain.AdReplicationstrategy" fetch="select">
+            <column name="ad_replicationstrategy_id" precision="10" scale="0" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="40" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="issummary" type="char">
+            <column name="issummary" length="1" not-null="true" />
+        </property>
+        <set name="adUserRoleses" table="ad_user_roles" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdUserRoles" />
+        </set>
+        <set name="adUsersForAdOrgtrxId" table="ad_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_orgtrx_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdUser" />
+        </set>
+        <set name="CCountries" table="c_country" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CCountry" />
+        </set>
+        <set name="CLocations" table="c_location" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CLocation" />
+        </set>
+        <set name="CBpartnersForAdOrgbpId" table="c_bpartner" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_orgbp_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartner" />
+        </set>
+        <set name="adWfNodes" table="ad_wf_node" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfNode" />
+        </set>
+        <set name="CCurrencies" table="c_currency" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CCurrency" />
+        </set>
+        <set name="adColumns" table="ad_column" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdColumn" />
+        </set>
+        <set name="adWorkflows" table="ad_workflow" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWorkflow" />
+        </set>
+        <set name="adTasks" table="ad_task" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdTask" />
+        </set>
+        <set name="adUserOrgaccesses" table="ad_user_orgaccess" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdUserOrgaccess" />
+        </set>
+        <set name="adRoles" table="ad_role" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdRole" />
+        </set>
+        <set name="adRoleOrgaccesses" table="ad_role_orgaccess" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdRoleOrgaccess" />
+        </set>
+        <set name="CBpartnerLocations" table="c_bpartner_location" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartnerLocation" />
+        </set>
+        <set name="adMenus" table="ad_menu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdMenu" />
+        </set>
+        <set name="adWindows" table="ad_window" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWindow" />
+        </set>
+        <set name="adLanguages" table="ad_language" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdLanguage" />
+        </set>
+        <set name="CCities" table="c_city" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CCity" />
+        </set>
+        <set name="adUsersForAdOrgId" table="ad_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdUser" />
+        </set>
+        <set name="adValRules" table="ad_val_rule" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdValRule" />
+        </set>
+        <set name="adWfResponsibles" table="ad_wf_responsible" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfResponsible" />
+        </set>
+        <set name="MWarehouses" table="m_warehouse" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.MWarehouse" />
+        </set>
+        <set name="CRegions" table="c_region" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CRegion" />
+        </set>
+        <set name="adReferences" table="ad_reference" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdReference" />
+        </set>
+        <set name="CBpartnersForAdOrgId" table="c_bpartner" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartner" />
+        </set>
+        <set name="adTables" table="ad_table" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdTable" />
+        </set>
+        <set name="CUoms" table="c_uom" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CUom" />
+        </set>
+    </class>
+</hibernate-mapping>

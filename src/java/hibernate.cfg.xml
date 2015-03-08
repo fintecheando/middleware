@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://olimpo.local:5432/adempiere?autoReconnectForPools=true</property>
+    <property name="hibernate.connection.username">adempiere</property>
+    <property name="connection.password">gusana02</property>
+    <!--<property name="c3p0.min_size">10</property>
+    <property name="c3p0.max_size">50</property>
+    <property name="c3p0.timeout">180</property>
+    <property name="c3p0.max_statements">90</property>-->
+    <property name="connection.provider_class">com.jolbox.bonecp.provider.BoneCPConnectionProvider</property>    
+    <property name="bonecp.driverClass">org.postgresql.Driver</property>
+    <property name="bonecp.url">jdbc:postgresql://olimpo.local:5432/adempiere?autoReconnectForPools=true</property>
+    <property name="bonecp.username">adempiere</property>
+    <property name="bonecp.password">gusana02</property>
+    <property name="bonecp.idleMaxAgeInMinutes">240</property>
+    <property name="bonecp.idleConnectionTestPeriodInMinutes">60</property>
+    <property name="bonecp.maxConnectionsPerPartition">10</property>
+    <property name="bonecp.minConnectionsPerPartition">1</property>
+    <property name="bonecp.partitionCount">2</property>
+    <property name="bonecp.acquireIncrement">5</property>
+    <property name="bonecp.statementsCacheSize">100</property>
+    <!--<property name="connection.pool_size">10</property> -->
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <!-- session properties -->
+    <property name="hibernate.current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>
+    <property name="show_sql">true</property>
+    <!--  <property name="hbm2ddl.auto">create</property>-->
+    <!--<mapping class="com.mx.hsbc.esa.middleware.domain.User2" />-->
+    <mapping resource="com/mx/nibble/domain/MProduct.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CProject.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CProjectType.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CProjectphase.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CProjecttask.hbm.xml"/>    
+    <mapping resource="com/mx/nibble/domain/AdMenuTrl.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CUom.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CTaxcategory.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdRoleIncluded.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdUserOrgaccess.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdPrintpaper.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CObra.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdWfNode.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/SResourcetype.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdPrintformat.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdWorkflowprocessor.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CPartida.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdColumn.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdClient.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CJobcategory.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdPrinttableformat.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdElement.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CTaxgroup.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdPrintcolor.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/MProductCategory.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CCity.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdReference.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CPaymentterm.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/ExpProcessor.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdRole.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CGreeting.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CSalesregion.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdWindow.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CBpartner.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdLanguage.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdWfBlock.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CBpGroup.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdEntitytype.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CConcepto.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdRoleOrgaccess.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdColor.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdMenu.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdOrg.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CDunning.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdTree.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AAssetGroup.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdImage.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdWorkbench.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdReportview.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdWorkflow.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdForm.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdUserRoles.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdProcess.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CMenuetl.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdTask.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/SResource.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CCountry.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CJob.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/MDiscountschema.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CBpartnerLocation.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdReplicationstrategy.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/RMailtext.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdValRule.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/MWarehouse.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdUser.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdTable.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CLocation.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CRegion.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CInvoiceschedule.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/MPricelist.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdPrintfont.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CCurrency.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/AdWfResponsible.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/ExpProcessorType.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

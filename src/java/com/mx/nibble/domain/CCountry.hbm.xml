@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.CCountry" table="c_country" schema="adempiere">
+        <id name="CCountryId" type="long">
+            <column name="c_country_id" precision="10" scale="0" />
+            <generator class="foreign">
+                <param name="property">CCountry</param>
+            </generator>
+        </id>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <one-to-one name="CCountry" class="com.mx.nibble.domain.CCountry" constrained="true"></one-to-one>
+        <many-to-one name="CCurrency" class="com.mx.nibble.domain.CCurrency" fetch="select">
+            <column name="c_currency_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adLanguage" class="com.mx.nibble.domain.AdLanguage" fetch="select">
+            <column name="ad_language" length="6" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="countrycode" type="string">
+            <column name="countrycode" length="2" not-null="true" unique="true" />
+        </property>
+        <property name="hasregion" type="char">
+            <column name="hasregion" length="1" not-null="true" />
+        </property>
+        <property name="regionname" type="string">
+            <column name="regionname" length="60" />
+        </property>
+        <property name="expressionphone" type="string">
+            <column name="expressionphone" length="20" />
+        </property>
+        <property name="displaysequence" type="string">
+            <column name="displaysequence" length="20" not-null="true" />
+        </property>
+        <property name="expressionpostal" type="string">
+            <column name="expressionpostal" length="20" />
+        </property>
+        <property name="haspostalAdd" type="char">
+            <column name="haspostal_add" length="1" not-null="true" />
+        </property>
+        <property name="expressionpostalAdd" type="string">
+            <column name="expressionpostal_add" length="20" />
+        </property>
+        <property name="displaysequencelocal" type="string">
+            <column name="displaysequencelocal" length="20" />
+        </property>
+        <property name="isaddresslinesreverse" type="char">
+            <column name="isaddresslinesreverse" length="1" not-null="true" />
+        </property>
+        <property name="isaddresslineslocalreverse" type="char">
+            <column name="isaddresslineslocalreverse" length="1" not-null="true" />
+        </property>
+        <property name="expressionbankroutingno" type="string">
+            <column name="expressionbankroutingno" length="20" />
+        </property>
+        <property name="expressionbankaccountno" type="string">
+            <column name="expressionbankaccountno" length="20" />
+        </property>
+        <property name="mediasize" type="string">
+            <column name="mediasize" length="40" />
+        </property>
+        <property name="ispostcodelookup" type="char">
+            <column name="ispostcodelookup" length="1" not-null="true" />
+        </property>
+        <property name="lookupclassname" type="string">
+            <column name="lookupclassname" />
+        </property>
+        <property name="lookupclientid" type="string">
+            <column name="lookupclientid" length="50" />
+        </property>
+        <property name="lookuppassword" type="string">
+            <column name="lookuppassword" length="50" />
+        </property>
+        <property name="lookupurl" type="string">
+            <column name="lookupurl" length="100" />
+        </property>
+        <property name="allowcitiesoutoflist" type="java.lang.Character">
+            <column name="allowcitiesoutoflist" length="1" />
+        </property>
+        <property name="capturesequence" type="string">
+            <column name="capturesequence" length="60" />
+        </property>
+        <set name="CCities" table="c_city" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_country_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CCity" />
+        </set>
+        <set name="CLocations" table="c_location" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_country_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CLocation" />
+        </set>
+        <set name="CRegions" table="c_region" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_country_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CRegion" />
+        </set>
+    </class>
+</hibernate-mapping>

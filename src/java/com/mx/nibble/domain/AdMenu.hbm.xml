@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdMenu" table="ad_menu" schema="adempiere">
+        <id name="adMenuId" type="long">
+            <column name="ad_menu_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adWindow" class="com.mx.nibble.domain.AdWindow" fetch="select">
+            <column name="ad_window_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adWorkflow" class="com.mx.nibble.domain.AdWorkflow" fetch="select">
+            <column name="ad_workflow_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adProcess" class="com.mx.nibble.domain.AdProcess" fetch="select">
+            <column name="ad_process_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adForm" class="com.mx.nibble.domain.AdForm" fetch="select">
+            <column name="ad_form_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adWorkbench" class="com.mx.nibble.domain.AdWorkbench" fetch="select">
+            <column name="ad_workbench_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adEntitytype" class="com.mx.nibble.domain.AdEntitytype" fetch="select">
+            <column name="entitytype" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adTask" class="com.mx.nibble.domain.AdTask" fetch="select">
+            <column name="ad_task_id" precision="10" scale="0" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="issummary" type="char">
+            <column name="issummary" length="1" not-null="true" />
+        </property>
+        <property name="issotrx" type="char">
+            <column name="issotrx" length="1" not-null="true" />
+        </property>
+        <property name="isreadonly" type="char">
+            <column name="isreadonly" length="1" not-null="true" />
+        </property>
+        <property name="action" type="java.lang.Character">
+            <column name="action" length="1" />
+        </property>
+        <property name="iscentrallymaintained" type="java.lang.Character">
+            <column name="iscentrallymaintained" length="1" />
+        </property>
+        <set name="adMenuTrls" table="ad_menu_trl" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_menu_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdMenuTrl" />
+        </set>
+    </class>
+</hibernate-mapping>

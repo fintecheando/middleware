@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdTable" table="ad_table" schema="adempiere">
+        <id name="adTableId" type="long">
+            <column name="ad_table_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adWindowByAdWindowId" class="com.mx.nibble.domain.AdWindow" fetch="select">
+            <column name="ad_window_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adValRule" class="com.mx.nibble.domain.AdValRule" fetch="select">
+            <column name="ad_val_rule_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adEntitytype" class="com.mx.nibble.domain.AdEntitytype" fetch="select">
+            <column name="entitytype" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adWindowByPoWindowId" class="com.mx.nibble.domain.AdWindow" fetch="select">
+            <column name="po_window_id" precision="10" scale="0" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="help" type="string">
+            <column name="help" length="2000" />
+        </property>
+        <property name="tablename" type="string">
+            <column name="tablename" length="40" not-null="true" unique="true" />
+        </property>
+        <property name="isview" type="char">
+            <column name="isview" length="1" not-null="true" />
+        </property>
+        <property name="accesslevel" type="char">
+            <column name="accesslevel" length="1" not-null="true" />
+        </property>
+        <property name="loadseq" type="java.lang.Long">
+            <column name="loadseq" precision="10" scale="0" />
+        </property>
+        <property name="issecurityenabled" type="char">
+            <column name="issecurityenabled" length="1" not-null="true" />
+        </property>
+        <property name="isdeleteable" type="char">
+            <column name="isdeleteable" length="1" not-null="true" />
+        </property>
+        <property name="ishighvolume" type="char">
+            <column name="ishighvolume" length="1" not-null="true" />
+        </property>
+        <property name="importtable" type="java.lang.Character">
+            <column name="importtable" length="1" />
+        </property>
+        <property name="ischangelog" type="char">
+            <column name="ischangelog" length="1" not-null="true" />
+        </property>
+        <property name="replicationtype" type="char">
+            <column name="replicationtype" length="1" not-null="true" />
+        </property>
+        <property name="copycolumnsfromtable" type="string">
+            <column name="copycolumnsfromtable" length="1" />
+        </property>
+        <property name="iscentrallymaintained" type="java.lang.Character">
+            <column name="iscentrallymaintained" length="1" />
+        </property>
+        <set name="adReportviews" table="ad_reportview" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_table_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdReportview" />
+        </set>
+        <set name="adPrintformats" table="ad_printformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_table_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrintformat" />
+        </set>
+        <set name="adWorkflows" table="ad_workflow" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_table_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWorkflow" />
+        </set>
+        <set name="adColumns" table="ad_column" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_table_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdColumn" />
+        </set>
+    </class>
+</hibernate-mapping>

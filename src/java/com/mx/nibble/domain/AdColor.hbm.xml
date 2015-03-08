@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdColor" table="ad_color" schema="adempiere">
+        <id name="adColorId" type="long">
+            <column name="ad_color_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adImage" class="com.mx.nibble.domain.AdImage" fetch="select">
+            <column name="ad_image_id" precision="10" scale="0" />
+        </many-to-one>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="isdefault" type="char">
+            <column name="isdefault" length="1" not-null="true" />
+        </property>
+        <property name="colortype" type="char">
+            <column name="colortype" length="1" not-null="true" />
+        </property>
+        <property name="red" type="long">
+            <column name="red" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="green" type="long">
+            <column name="green" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="blue" type="long">
+            <column name="blue" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="alpha" type="long">
+            <column name="alpha" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="imagealpha" type="big_decimal">
+            <column name="imagealpha" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="red1" type="java.lang.Long">
+            <column name="red_1" precision="10" scale="0" />
+        </property>
+        <property name="green1" type="java.lang.Long">
+            <column name="green_1" precision="10" scale="0" />
+        </property>
+        <property name="blue1" type="java.lang.Long">
+            <column name="blue_1" precision="10" scale="0" />
+        </property>
+        <property name="alpha1" type="java.lang.Long">
+            <column name="alpha_1" precision="10" scale="0" />
+        </property>
+        <property name="linewidth" type="java.lang.Long">
+            <column name="linewidth" precision="10" scale="0" />
+        </property>
+        <property name="linedistance" type="java.lang.Long">
+            <column name="linedistance" precision="10" scale="0" />
+        </property>
+        <property name="startpoint" type="java.lang.Long">
+            <column name="startpoint" precision="10" scale="0" />
+        </property>
+        <property name="repeatdistance" type="java.lang.Long">
+            <column name="repeatdistance" precision="10" scale="0" />
+        </property>
+        <set name="adWindows" table="ad_window" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_color_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWindow" />
+        </set>
+        <set name="adWorkbenches" table="ad_workbench" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_color_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWorkbench" />
+        </set>
+    </class>
+</hibernate-mapping>

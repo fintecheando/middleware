@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdPrintpaper" table="ad_printpaper" schema="adempiere">
+        <id name="adPrintpaperId" type="long">
+            <column name="ad_printpaper_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="isdefault" type="char">
+            <column name="isdefault" length="1" not-null="true" />
+        </property>
+        <property name="islandscape" type="char">
+            <column name="islandscape" length="1" not-null="true" />
+        </property>
+        <property name="code" type="string">
+            <column name="code" length="2000" not-null="true" />
+        </property>
+        <property name="margintop" type="long">
+            <column name="margintop" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="marginleft" type="long">
+            <column name="marginleft" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="marginright" type="long">
+            <column name="marginright" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="marginbottom" type="long">
+            <column name="marginbottom" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="processing" type="java.lang.Character">
+            <column name="processing" length="1" />
+        </property>
+        <property name="sizex" type="big_decimal">
+            <column name="sizex" precision="131089" scale="0" />
+        </property>
+        <property name="sizey" type="big_decimal">
+            <column name="sizey" precision="131089" scale="0" />
+        </property>
+        <property name="dimensionunits" type="java.lang.Character">
+            <column name="dimensionunits" length="1" />
+        </property>
+        <set name="adPrintformats" table="ad_printformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_printpaper_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrintformat" />
+        </set>
+    </class>
+</hibernate-mapping>

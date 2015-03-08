@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>Middleware</display-name>
+    <filter>
+        <filter-name>struts2</filter-name>
+        <!--<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>-->
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <session-config>
+        <session-timeout>10</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+    <context-param>
+        <description>path to log folder</description>
+        <param-name>logdir</param-name>
+        <param-value>/opt/erp/log</param-value>
+    </context-param>
+    <servlet>
+        <description>
+  	</description>
+        <display-name>DownloadZipFile</display-name>
+        <servlet-name>DownloadZipFile</servlet-name>
+        <servlet-class>org.webtail.tail.DownloadZipFile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadZipFile</servlet-name>
+        <url-pattern>/DownloadZipFile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <display-name>Upload</display-name>
+        <servlet-name>Upload</servlet-name>
+        <servlet-class>com.mx.nibble.middleware.web.util.Upload</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Upload</servlet-name>
+        <url-pattern>/Upload.do</url-pattern>
+    </servlet-mapping>
+</web-app>

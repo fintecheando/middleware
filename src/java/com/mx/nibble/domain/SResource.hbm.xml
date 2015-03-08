@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.SResource" table="s_resource" schema="adempiere">
+        <id name="SResourceId" type="long">
+            <column name="s_resource_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="SResourcetype" class="com.mx.nibble.domain.SResourcetype" fetch="select">
+            <column name="s_resourcetype_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adUser" class="com.mx.nibble.domain.AdUser" fetch="select">
+            <column name="ad_user_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="MWarehouse" class="com.mx.nibble.domain.MWarehouse" fetch="select">
+            <column name="m_warehouse_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="40" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="isavailable" type="char">
+            <column name="isavailable" length="1" not-null="true" />
+        </property>
+        <property name="chargeableqty" type="big_decimal">
+            <column name="chargeableqty" precision="131089" scale="0" />
+        </property>
+        <property name="percentutilization" type="big_decimal">
+            <column name="percentutilization" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="dailycapacity" type="big_decimal">
+            <column name="dailycapacity" precision="131089" scale="0" />
+        </property>
+        <property name="ismanufacturingresource" type="java.lang.Character">
+            <column name="ismanufacturingresource" length="1" />
+        </property>
+        <property name="waitingtime" type="big_decimal">
+            <column name="waitingtime" precision="131089" scale="0" />
+        </property>
+        <property name="manufacturingresourcetype" type="string">
+            <column name="manufacturingresourcetype" length="2" />
+        </property>
+        <property name="queuingtime" type="big_decimal">
+            <column name="queuingtime" precision="131089" scale="0" />
+        </property>
+        <property name="planninghorizon" type="java.lang.Long">
+            <column name="planninghorizon" precision="10" scale="0" />
+        </property>
+        <set name="adWorkflows" table="ad_workflow" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="s_resource_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWorkflow" />
+        </set>
+        <set name="adWfNodes" table="ad_wf_node" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="s_resource_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfNode" />
+        </set>
+    </class>
+</hibernate-mapping>

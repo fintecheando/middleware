@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.CBpartnerLocation" table="c_bpartner_location" schema="adempiere">
+        <id name="CBpartnerLocationId" type="long">
+            <column name="c_bpartner_location_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="CBpartner" class="com.mx.nibble.domain.CBpartner" fetch="select">
+            <column name="c_bpartner_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="CSalesregion" class="com.mx.nibble.domain.CSalesregion" fetch="select">
+            <column name="c_salesregion_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="CLocation" class="com.mx.nibble.domain.CLocation" fetch="select">
+            <column name="c_location_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="isbillto" type="char">
+            <column name="isbillto" length="1" not-null="true" />
+        </property>
+        <property name="isshipto" type="char">
+            <column name="isshipto" length="1" not-null="true" />
+        </property>
+        <property name="ispayfrom" type="char">
+            <column name="ispayfrom" length="1" not-null="true" />
+        </property>
+        <property name="isremitto" type="char">
+            <column name="isremitto" length="1" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="40" />
+        </property>
+        <property name="phone2" type="string">
+            <column name="phone2" length="40" />
+        </property>
+        <property name="fax" type="string">
+            <column name="fax" length="40" />
+        </property>
+        <property name="isdn" type="string">
+            <column name="isdn" length="40" />
+        </property>
+        <set name="adUsers" table="ad_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_bpartner_location_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdUser" />
+        </set>
+    </class>
+</hibernate-mapping>

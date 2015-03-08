@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.MDiscountschema" table="m_discountschema" schema="adempiere">
+        <id name="MDiscountschemaId" type="long">
+            <column name="m_discountschema_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="validfrom" type="timestamp">
+            <column name="validfrom" length="29" not-null="true" />
+        </property>
+        <property name="discounttype" type="char">
+            <column name="discounttype" length="1" not-null="true" />
+        </property>
+        <property name="script" type="string">
+            <column name="script" length="2000" />
+        </property>
+        <property name="flatdiscount" type="big_decimal">
+            <column name="flatdiscount" precision="131089" scale="0" />
+        </property>
+        <property name="isquantitybased" type="char">
+            <column name="isquantitybased" length="1" not-null="true" />
+        </property>
+        <property name="cumulativelevel" type="java.lang.Character">
+            <column name="cumulativelevel" length="1" />
+        </property>
+        <property name="processing" type="java.lang.Character">
+            <column name="processing" length="1" />
+        </property>
+        <property name="isbpartnerflatdiscount" type="char">
+            <column name="isbpartnerflatdiscount" length="1" not-null="true" />
+        </property>
+        <set name="CBpGroupsForMDiscountschemaId" table="c_bp_group" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="m_discountschema_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpGroup" />
+        </set>
+        <set name="CBpGroupsForPoDiscountschemaId" table="c_bp_group" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="po_discountschema_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpGroup" />
+        </set>
+        <set name="CBpartnersForPoDiscountschemaId" table="c_bpartner" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="po_discountschema_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartner" />
+        </set>
+        <set name="CBpartnersForMDiscountschemaId" table="c_bpartner" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="m_discountschema_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartner" />
+        </set>
+    </class>
+</hibernate-mapping>

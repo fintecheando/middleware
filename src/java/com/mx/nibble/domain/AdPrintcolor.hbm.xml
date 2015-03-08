@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdPrintcolor" table="ad_printcolor" schema="adempiere">
+        <id name="adPrintcolorId" type="long">
+            <column name="ad_printcolor_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="isdefault" type="char">
+            <column name="isdefault" length="1" not-null="true" />
+        </property>
+        <property name="code" type="string">
+            <column name="code" length="2000" not-null="true" />
+        </property>
+        <set name="CBpGroups" table="c_bp_group" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_printcolor_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpGroup" />
+        </set>
+        <set name="adPrinttableformatsForFunctbgPrintcolorId" table="ad_printtableformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="functbg_printcolor_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrinttableformat" />
+        </set>
+        <set name="adPrinttableformatsForHdrtextbgPrintcolorId" table="ad_printtableformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hdrtextbg_printcolor_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrinttableformat" />
+        </set>
+        <set name="MProductCategories" table="m_product_category" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_printcolor_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.MProductCategory" />
+        </set>
+        <set name="adPrinttableformatsForFunctfgPrintcolorId" table="ad_printtableformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="functfg_printcolor_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrinttableformat" />
+        </set>
+        <set name="adPrinttableformatsForHdrlinePrintcolorId" table="ad_printtableformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hdrline_printcolor_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrinttableformat" />
+        </set>
+        <set name="adPrinttableformatsForHdrtextfgPrintcolorId" table="ad_printtableformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hdrtextfg_printcolor_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrinttableformat" />
+        </set>
+        <set name="adPrintformats" table="ad_printformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_printcolor_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrintformat" />
+        </set>
+        <set name="adPrinttableformatsForLinePrintcolorId" table="ad_printtableformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="line_printcolor_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrinttableformat" />
+        </set>
+    </class>
+</hibernate-mapping>

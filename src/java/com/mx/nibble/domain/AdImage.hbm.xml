@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdImage" table="ad_image" schema="adempiere">
+        <id name="adImageId" type="long">
+            <column name="ad_image_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adEntitytype" class="com.mx.nibble.domain.AdEntitytype" fetch="select">
+            <column name="entitytype" length="40" not-null="true" />
+        </many-to-one>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="imageurl" type="string">
+            <column name="imageurl" length="120" />
+        </property>
+        <property name="binarydata" type="binary">
+            <column name="binarydata" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <set name="adWindows" table="ad_window" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_image_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWindow" />
+        </set>
+        <set name="adColors" table="ad_color" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_image_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdColor" />
+        </set>
+        <set name="adWfNodes" table="ad_wf_node" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_image_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfNode" />
+        </set>
+        <set name="adPrinttableformats" table="ad_printtableformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_image_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrinttableformat" />
+        </set>
+        <set name="adWorkbenches" table="ad_workbench" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_image_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWorkbench" />
+        </set>
+        <set name="CBpartners" table="c_bpartner" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="logo_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartner" />
+        </set>
+    </class>
+</hibernate-mapping>

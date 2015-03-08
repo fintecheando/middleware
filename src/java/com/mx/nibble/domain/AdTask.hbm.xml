@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdTask" table="ad_task" schema="adempiere">
+        <id name="adTaskId" type="long">
+            <column name="ad_task_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adEntitytype" class="com.mx.nibble.domain.AdEntitytype" fetch="select">
+            <column name="entitytype" length="40" not-null="true" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="help" type="string">
+            <column name="help" length="2000" />
+        </property>
+        <property name="accesslevel" type="char">
+            <column name="accesslevel" length="1" not-null="true" />
+        </property>
+        <property name="osCommand" type="string">
+            <column name="os_command" length="2000" not-null="true" />
+        </property>
+        <property name="isserverprocess" type="char">
+            <column name="isserverprocess" length="1" not-null="true" />
+        </property>
+        <set name="adWfNodes" table="ad_wf_node" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_task_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfNode" />
+        </set>
+        <set name="adMenus" table="ad_menu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_task_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdMenu" />
+        </set>
+    </class>
+</hibernate-mapping>

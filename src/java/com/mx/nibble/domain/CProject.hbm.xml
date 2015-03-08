@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.CProject" table="c_project" schema="adempiere">
+        <id name="CProjectId" type="long">
+            <column name="c_project_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="40" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="2000" />
+        </property>
+        <property name="issummary" type="char">
+            <column name="issummary" length="1" not-null="true" />
+        </property>
+        <property name="adUserId" type="java.lang.Long">
+            <column name="ad_user_id" precision="10" scale="0" />
+        </property>
+        <property name="CBpartnerId" type="java.lang.Long">
+            <column name="c_bpartner_id" precision="10" scale="0" />
+        </property>
+        <property name="CBpartnerLocationId" type="java.lang.Long">
+            <column name="c_bpartner_location_id" precision="10" scale="0" />
+        </property>
+        <property name="poreference" type="string">
+            <column name="poreference" length="20" />
+        </property>
+        <property name="CPaymenttermId" type="java.lang.Long">
+            <column name="c_paymentterm_id" precision="10" scale="0" />
+        </property>
+        <property name="CCurrencyId" type="long">
+            <column name="c_currency_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="MPricelistVersionId" type="java.lang.Long">
+            <column name="m_pricelist_version_id" precision="10" scale="0" />
+        </property>
+        <property name="CCampaignId" type="java.lang.Long">
+            <column name="c_campaign_id" precision="10" scale="0" />
+        </property>
+        <property name="iscommitment" type="char">
+            <column name="iscommitment" length="1" not-null="true" />
+        </property>
+        <property name="plannedamt" type="big_decimal">
+            <column name="plannedamt" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="plannedqty" type="big_decimal">
+            <column name="plannedqty" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="plannedmarginamt" type="big_decimal">
+            <column name="plannedmarginamt" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="committedamt" type="big_decimal">
+            <column name="committedamt" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="datecontract" type="timestamp">
+            <column name="datecontract" length="29" />
+        </property>
+        <property name="datefinish" type="timestamp">
+            <column name="datefinish" length="29" />
+        </property>
+        <property name="generateto" type="java.lang.Character">
+            <column name="generateto" length="1" />
+        </property>
+        <property name="processed" type="char">
+            <column name="processed" length="1" not-null="true" />
+        </property>
+        <property name="salesrepId" type="java.lang.Long">
+            <column name="salesrep_id" precision="10" scale="0" />
+        </property>
+        <property name="copyfrom" type="java.lang.Character">
+            <column name="copyfrom" length="1" />
+        </property>
+        <property name="CProjecttypeId" type="java.lang.Long">
+            <column name="c_projecttype_id" precision="10" scale="0" />
+        </property>
+        <property name="committedqty" type="big_decimal">
+            <column name="committedqty" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="invoicedamt" type="big_decimal">
+            <column name="invoicedamt" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="invoicedqty" type="big_decimal">
+            <column name="invoicedqty" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="projectbalanceamt" type="big_decimal">
+            <column name="projectbalanceamt" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="CPhaseId" type="java.lang.Long">
+            <column name="c_phase_id" precision="10" scale="0" />
+        </property>
+        <property name="iscommitceiling" type="char">
+            <column name="iscommitceiling" length="1" not-null="true" />
+        </property>
+        <property name="MWarehouseId" type="java.lang.Long">
+            <column name="m_warehouse_id" precision="10" scale="0" />
+        </property>
+        <property name="projectcategory" type="java.lang.Character">
+            <column name="projectcategory" length="1" />
+        </property>
+        <property name="processing" type="java.lang.Character">
+            <column name="processing" length="1" />
+        </property>
+        <property name="CBpartnersrId" type="java.lang.Long">
+            <column name="c_bpartnersr_id" precision="10" scale="0" />
+        </property>
+        <property name="projinvoicerule" type="char">
+            <column name="projinvoicerule" length="1" not-null="true" />
+        </property>
+        <property name="projectlinelevel" type="char">
+            <column name="projectlinelevel" length="1" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

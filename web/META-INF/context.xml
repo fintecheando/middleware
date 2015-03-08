@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/middleware" allowCasualMultipartParsing="true">
+ <Resource
+   name="jdbc/middleware"
+   auth="Container"
+   type="com.atomikos.jdbc.AtomikosDataSourceBean"
+   factory="com.atomikos.tomcat.BeanFactory"
+   uniqueResourceName="jdbc/middleware"
+   xaDataSourceClassName="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource"
+   xaProperties.databaseName="middleware"
+   xaProperties.serverName="localhost"
+   xaProperties.port="3306"
+   xaProperties.user="root"
+   xaProperties.password="gusana02"
+   xaProperties.url="jdbc:mysql://localhost:3306/middleware"/>
+   
+</Context>

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.CCurrency" table="c_currency" schema="adempiere">
+        <id name="CCurrencyId" type="long">
+            <column name="c_currency_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isoCode" type="string">
+            <column name="iso_code" length="3" not-null="true" unique="true" />
+        </property>
+        <property name="cursymbol" type="string">
+            <column name="cursymbol" length="10" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true" />
+        </property>
+        <property name="stdprecision" type="long">
+            <column name="stdprecision" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="costingprecision" type="long">
+            <column name="costingprecision" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="iseuro" type="char">
+            <column name="iseuro" length="1" not-null="true" />
+        </property>
+        <property name="isemumember" type="char">
+            <column name="isemumember" length="1" not-null="true" />
+        </property>
+        <property name="emuentrydate" type="timestamp">
+            <column name="emuentrydate" length="29" />
+        </property>
+        <property name="emurate" type="big_decimal">
+            <column name="emurate" precision="131089" scale="0" />
+        </property>
+        <property name="roundofffactor" type="big_decimal">
+            <column name="roundofffactor" precision="131089" scale="0" />
+        </property>
+        <set name="CCountries" table="c_country" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_currency_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CCountry" />
+        </set>
+        <set name="adRoles" table="ad_role" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_currency_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdRole" />
+        </set>
+        <set name="MPricelists" table="m_pricelist" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_currency_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.MPricelist" />
+        </set>
+    </class>
+</hibernate-mapping>

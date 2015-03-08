@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<configuration>
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">    
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%d{HH:mm:ss.SSS} %-5level %class{36}:%L %M - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="log" class="ch.qos.logback.core.FileAppender">
+    <File>../logs/midleware.log</File>
+    <Append>true</Append>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%date %d{HH:mm:ss.SSS} %-5level %class{36}:%L %M - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root>
+    <level value="DEBUG" />
+    <appender-ref ref="console" />
+    <appender-ref ref="log" />
+  </root>
+</configuration>

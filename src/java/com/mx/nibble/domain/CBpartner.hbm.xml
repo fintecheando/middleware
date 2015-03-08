@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.CBpartner" table="c_bpartner" schema="adempiere">
+        <id name="CBpartnerId" type="long">
+            <column name="c_bpartner_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adPrintformat" class="com.mx.nibble.domain.AdPrintformat" fetch="select">
+            <column name="invoice_printformat_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="CBpartner" class="com.mx.nibble.domain.CBpartner" fetch="select">
+            <column name="bpartner_parent_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="CGreeting" class="com.mx.nibble.domain.CGreeting" fetch="select">
+            <column name="c_greeting_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adImage" class="com.mx.nibble.domain.AdImage" fetch="select">
+            <column name="logo_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adOrgByAdOrgbpId" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_orgbp_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adUser" class="com.mx.nibble.domain.AdUser" fetch="select">
+            <column name="salesrep_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adOrgByAdOrgId" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="MDiscountschemaByMDiscountschemaId" class="com.mx.nibble.domain.MDiscountschema" fetch="select">
+            <column name="m_discountschema_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="CBpGroup" class="com.mx.nibble.domain.CBpGroup" fetch="select">
+            <column name="c_bp_group_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="CDunning" class="com.mx.nibble.domain.CDunning" fetch="select">
+            <column name="c_dunning_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="CTaxgroup" class="com.mx.nibble.domain.CTaxgroup" fetch="select">
+            <column name="c_taxgroup_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="MPricelistByMPricelistId" class="com.mx.nibble.domain.MPricelist" fetch="select">
+            <column name="m_pricelist_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="CPaymenttermByPoPaymenttermId" class="com.mx.nibble.domain.CPaymentterm" fetch="select">
+            <column name="po_paymentterm_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="CPaymenttermByCPaymenttermId" class="com.mx.nibble.domain.CPaymentterm" fetch="select">
+            <column name="c_paymentterm_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="CInvoiceschedule" class="com.mx.nibble.domain.CInvoiceschedule" fetch="select">
+            <column name="c_invoiceschedule_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="MPricelistByPoPricelistId" class="com.mx.nibble.domain.MPricelist" fetch="select">
+            <column name="po_pricelist_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adLanguage" class="com.mx.nibble.domain.AdLanguage" fetch="select">
+            <column name="ad_language" length="6" />
+        </many-to-one>
+        <many-to-one name="MDiscountschemaByPoDiscountschemaId" class="com.mx.nibble.domain.MDiscountschema" fetch="select">
+            <column name="po_discountschema_id" precision="10" scale="0" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="40" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="name2" type="string">
+            <column name="name2" length="60" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="issummary" type="char">
+            <column name="issummary" length="1" not-null="true" />
+        </property>
+        <property name="isonetime" type="char">
+            <column name="isonetime" length="1" not-null="true" />
+        </property>
+        <property name="isprospect" type="char">
+            <column name="isprospect" length="1" not-null="true" />
+        </property>
+        <property name="isvendor" type="char">
+            <column name="isvendor" length="1" not-null="true" />
+        </property>
+        <property name="iscustomer" type="char">
+            <column name="iscustomer" length="1" not-null="true" />
+        </property>
+        <property name="isemployee" type="char">
+            <column name="isemployee" length="1" not-null="true" />
+        </property>
+        <property name="issalesrep" type="char">
+            <column name="issalesrep" length="1" not-null="true" />
+        </property>
+        <property name="referenceno" type="string">
+            <column name="referenceno" length="40" />
+        </property>
+        <property name="duns" type="string">
+            <column name="duns" length="11" />
+        </property>
+        <property name="url" type="string">
+            <column name="url" length="120" />
+        </property>
+        <property name="taxid" type="string">
+            <column name="taxid" length="20" />
+        </property>
+        <property name="istaxexempt" type="java.lang.Character">
+            <column name="istaxexempt" length="1" />
+        </property>
+        <property name="rating" type="java.lang.Character">
+            <column name="rating" length="1" />
+        </property>
+        <property name="salesvolume" type="java.lang.Long">
+            <column name="salesvolume" precision="10" scale="0" />
+        </property>
+        <property name="numberemployees" type="java.lang.Long">
+            <column name="numberemployees" precision="10" scale="0" />
+        </property>
+        <property name="naics" type="string">
+            <column name="naics" length="6" />
+        </property>
+        <property name="firstsale" type="timestamp">
+            <column name="firstsale" length="29" />
+        </property>
+        <property name="acqusitioncost" type="big_decimal">
+            <column name="acqusitioncost" precision="131089" scale="0" />
+        </property>
+        <property name="potentiallifetimevalue" type="big_decimal">
+            <column name="potentiallifetimevalue" precision="131089" scale="0" />
+        </property>
+        <property name="actuallifetimevalue" type="big_decimal">
+            <column name="actuallifetimevalue" precision="131089" scale="0" />
+        </property>
+        <property name="shareofcustomer" type="java.lang.Long">
+            <column name="shareofcustomer" precision="10" scale="0" />
+        </property>
+        <property name="paymentrule" type="java.lang.Character">
+            <column name="paymentrule" length="1" />
+        </property>
+        <property name="soCreditlimit" type="big_decimal">
+            <column name="so_creditlimit" precision="131089" scale="0" />
+        </property>
+        <property name="soCreditused" type="big_decimal">
+            <column name="so_creditused" precision="131089" scale="0" />
+        </property>
+        <property name="isdiscountprinted" type="java.lang.Character">
+            <column name="isdiscountprinted" length="1" />
+        </property>
+        <property name="soDescription" type="string">
+            <column name="so_description" />
+        </property>
+        <property name="poreference" type="string">
+            <column name="poreference" length="20" />
+        </property>
+        <property name="paymentrulepo" type="java.lang.Character">
+            <column name="paymentrulepo" length="1" />
+        </property>
+        <property name="documentcopies" type="java.lang.Long">
+            <column name="documentcopies" precision="10" scale="0" />
+        </property>
+        <property name="invoicerule" type="java.lang.Character">
+            <column name="invoicerule" length="1" />
+        </property>
+        <property name="deliveryrule" type="java.lang.Character">
+            <column name="deliveryrule" length="1" />
+        </property>
+        <property name="freightcostrule" type="java.lang.Character">
+            <column name="freightcostrule" length="1" />
+        </property>
+        <property name="deliveryviarule" type="java.lang.Character">
+            <column name="deliveryviarule" length="1" />
+        </property>
+        <property name="sendemail" type="char">
+            <column name="sendemail" length="1" not-null="true" />
+        </property>
+        <property name="socreditstatus" type="java.lang.Character">
+            <column name="socreditstatus" length="1" />
+        </property>
+        <property name="shelflifeminpct" type="java.lang.Long">
+            <column name="shelflifeminpct" precision="10" scale="0" />
+        </property>
+        <property name="flatdiscount" type="big_decimal">
+            <column name="flatdiscount" precision="131089" scale="0" />
+        </property>
+        <property name="totalopenbalance" type="big_decimal">
+            <column name="totalopenbalance" precision="131089" scale="0" />
+        </property>
+        <property name="dunninggrace" type="timestamp">
+            <column name="dunninggrace" length="29" />
+        </property>
+        <property name="ispotaxexempt" type="char">
+            <column name="ispotaxexempt" length="1" not-null="true" />
+        </property>
+        <property name="ismanufacturer" type="java.lang.Character">
+            <column name="ismanufacturer" length="1" />
+        </property>
+        <set name="adUsers" table="ad_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_bpartner_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdUser" />
+        </set>
+        <set name="CBpartnerLocations" table="c_bpartner_location" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_bpartner_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartnerLocation" />
+        </set>
+        <set name="CBpartners" table="c_bpartner" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bpartner_parent_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartner" />
+        </set>
+        <set name="adWfNodes" table="ad_wf_node" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_bpartner_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfNode" />
+        </set>
+    </class>
+</hibernate-mapping>

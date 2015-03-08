@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdPrinttableformat" table="ad_printtableformat" schema="adempiere">
+        <id name="adPrinttableformatId" type="long">
+            <column name="ad_printtableformat_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adPrintcolorByLinePrintcolorId" class="com.mx.nibble.domain.AdPrintcolor" fetch="select">
+            <column name="line_printcolor_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adPrintcolorByHdrtextbgPrintcolorId" class="com.mx.nibble.domain.AdPrintcolor" fetch="select">
+            <column name="hdrtextbg_printcolor_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adImage" class="com.mx.nibble.domain.AdImage" fetch="select">
+            <column name="ad_image_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adPrintfontByFunctPrintfontId" class="com.mx.nibble.domain.AdPrintfont" fetch="select">
+            <column name="funct_printfont_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adPrintcolorByHdrtextfgPrintcolorId" class="com.mx.nibble.domain.AdPrintcolor" fetch="select">
+            <column name="hdrtextfg_printcolor_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adPrintcolorByFunctbgPrintcolorId" class="com.mx.nibble.domain.AdPrintcolor" fetch="select">
+            <column name="functbg_printcolor_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adPrintcolorByFunctfgPrintcolorId" class="com.mx.nibble.domain.AdPrintcolor" fetch="select">
+            <column name="functfg_printcolor_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adPrintfontByHdrPrintfontId" class="com.mx.nibble.domain.AdPrintfont" fetch="select">
+            <column name="hdr_printfont_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adPrintcolorByHdrlinePrintcolorId" class="com.mx.nibble.domain.AdPrintcolor" fetch="select">
+            <column name="hdrline_printcolor_id" precision="10" scale="0" />
+        </many-to-one>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="ispaintboundarylines" type="char">
+            <column name="ispaintboundarylines" length="1" not-null="true" />
+        </property>
+        <property name="ispainthlines" type="char">
+            <column name="ispainthlines" length="1" not-null="true" />
+        </property>
+        <property name="ispaintvlines" type="char">
+            <column name="ispaintvlines" length="1" not-null="true" />
+        </property>
+        <property name="isprintfunctionsymbols" type="char">
+            <column name="isprintfunctionsymbols" length="1" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="isdefault" type="char">
+            <column name="isdefault" length="1" not-null="true" />
+        </property>
+        <property name="imageurl" type="string">
+            <column name="imageurl" length="120" />
+        </property>
+        <property name="headerleft" type="string">
+            <column name="headerleft" />
+        </property>
+        <property name="headercenter" type="string">
+            <column name="headercenter" />
+        </property>
+        <property name="headerright" type="string">
+            <column name="headerright" />
+        </property>
+        <property name="footerleft" type="string">
+            <column name="footerleft" />
+        </property>
+        <property name="footercenter" type="string">
+            <column name="footercenter" />
+        </property>
+        <property name="footerright" type="string">
+            <column name="footerright" />
+        </property>
+        <property name="imageisattached" type="java.lang.Character">
+            <column name="imageisattached" length="1" />
+        </property>
+        <property name="hdrstroke" type="big_decimal">
+            <column name="hdrstroke" precision="131089" scale="0" />
+        </property>
+        <property name="linestroke" type="big_decimal">
+            <column name="linestroke" precision="131089" scale="0" />
+        </property>
+        <property name="hdrstroketype" type="java.lang.Character">
+            <column name="hdrstroketype" length="1" />
+        </property>
+        <property name="linestroketype" type="java.lang.Character">
+            <column name="linestroketype" length="1" />
+        </property>
+        <property name="ispaintheaderlines" type="char">
+            <column name="ispaintheaderlines" length="1" not-null="true" />
+        </property>
+        <property name="ismultilineheader" type="char">
+            <column name="ismultilineheader" length="1" not-null="true" />
+        </property>
+        <set name="adPrintformats" table="ad_printformat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_printtableformat_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdPrintformat" />
+        </set>
+    </class>
+</hibernate-mapping>

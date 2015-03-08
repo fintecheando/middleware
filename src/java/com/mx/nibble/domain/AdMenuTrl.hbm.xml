@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdMenuTrl" table="ad_menu_trl" schema="adempiere">
+        <composite-id name="id" class="com.mx.nibble.domain.AdMenuTrlId">
+            <key-property name="adMenuId" type="long">
+                <column name="ad_menu_id" precision="10" scale="0" />
+            </key-property>
+            <key-property name="adLanguage" type="string">
+                <column name="ad_language" length="6" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="adMenu" class="com.mx.nibble.domain.AdMenu" update="false" insert="false" fetch="select">
+            <column name="ad_menu_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adLanguage" class="com.mx.nibble.domain.AdLanguage" update="false" insert="false" fetch="select">
+            <column name="ad_language" length="6" not-null="true" />
+        </many-to-one>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="istranslated" type="char">
+            <column name="istranslated" length="1" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

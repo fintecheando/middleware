@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.CPaymentterm" table="c_paymentterm" schema="adempiere">
+        <id name="CPaymenttermId" type="long">
+            <column name="c_paymentterm_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="documentnote" type="string">
+            <column name="documentnote" length="2000" />
+        </property>
+        <property name="afterdelivery" type="char">
+            <column name="afterdelivery" length="1" not-null="true" />
+        </property>
+        <property name="isduefixed" type="char">
+            <column name="isduefixed" length="1" not-null="true" />
+        </property>
+        <property name="netdays" type="long">
+            <column name="netdays" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="gracedays" type="long">
+            <column name="gracedays" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="fixmonthcutoff" type="java.lang.Long">
+            <column name="fixmonthcutoff" precision="10" scale="0" />
+        </property>
+        <property name="fixmonthday" type="java.lang.Long">
+            <column name="fixmonthday" precision="10" scale="0" />
+        </property>
+        <property name="fixmonthoffset" type="java.lang.Long">
+            <column name="fixmonthoffset" precision="10" scale="0" />
+        </property>
+        <property name="discountdays" type="long">
+            <column name="discountdays" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="discount" type="big_decimal">
+            <column name="discount" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="discountdays2" type="long">
+            <column name="discountdays2" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="discount2" type="big_decimal">
+            <column name="discount2" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="isnextbusinessday" type="java.lang.Character">
+            <column name="isnextbusinessday" length="1" />
+        </property>
+        <property name="isdefault" type="java.lang.Character">
+            <column name="isdefault" length="1" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="40" not-null="true" />
+        </property>
+        <property name="netday" type="java.lang.Character">
+            <column name="netday" length="1" />
+        </property>
+        <property name="isvalid" type="char">
+            <column name="isvalid" length="1" not-null="true" />
+        </property>
+        <property name="processing" type="java.lang.Character">
+            <column name="processing" length="1" />
+        </property>
+        <set name="CBpartnersForCPaymenttermId" table="c_bpartner" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_paymentterm_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartner" />
+        </set>
+        <set name="CBpartnersForPoPaymenttermId" table="c_bpartner" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="po_paymentterm_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.CBpartner" />
+        </set>
+    </class>
+</hibernate-mapping>

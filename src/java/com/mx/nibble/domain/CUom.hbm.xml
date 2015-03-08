@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.CUom" table="c_uom" schema="adempiere">
+        <id name="CUomId" type="long">
+            <column name="c_uom_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="x12de355" type="string">
+            <column name="x12de355" length="4" not-null="true" />
+        </property>
+        <property name="uomsymbol" type="string">
+            <column name="uomsymbol" length="10" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="stdprecision" type="long">
+            <column name="stdprecision" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="costingprecision" type="long">
+            <column name="costingprecision" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isdefault" type="char">
+            <column name="isdefault" length="1" not-null="true" />
+        </property>
+        <property name="uomtype" type="string">
+            <column name="uomtype" length="2" />
+        </property>
+        <set name="SResourcetypes" table="s_resourcetype" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="c_uom_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.SResourcetype" />
+        </set>
+    </class>
+</hibernate-mapping>

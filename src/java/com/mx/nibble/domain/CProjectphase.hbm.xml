@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.CProjectphase" table="c_projectphase" schema="adempiere">
+        <id name="CProjectphaseId" type="long">
+            <column name="c_projectphase_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="CProjectId" type="long">
+            <column name="c_project_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="startdate" type="timestamp">
+            <column name="startdate" length="29" />
+        </property>
+        <property name="enddate" type="timestamp">
+            <column name="enddate" length="29" />
+        </property>
+        <property name="iscomplete" type="char">
+            <column name="iscomplete" length="1" not-null="true" />
+        </property>
+        <property name="MProductId" type="java.lang.Long">
+            <column name="m_product_id" precision="10" scale="0" />
+        </property>
+        <property name="priceactual" type="big_decimal">
+            <column name="priceactual" precision="131089" scale="0" />
+        </property>
+        <property name="generateorder" type="java.lang.Character">
+            <column name="generateorder" length="1" />
+        </property>
+        <property name="COrderId" type="java.lang.Long">
+            <column name="c_order_id" precision="10" scale="0" />
+        </property>
+        <property name="CPhaseId" type="java.lang.Long">
+            <column name="c_phase_id" precision="10" scale="0" />
+        </property>
+        <property name="help" type="string">
+            <column name="help" length="2000" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="qty" type="big_decimal">
+            <column name="qty" precision="131089" scale="0" />
+        </property>
+        <property name="seqno" type="long">
+            <column name="seqno" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="committedamt" type="big_decimal">
+            <column name="committedamt" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="iscommitceiling" type="char">
+            <column name="iscommitceiling" length="1" not-null="true" />
+        </property>
+        <property name="projinvoicerule" type="java.lang.Character">
+            <column name="projinvoicerule" length="1" />
+        </property>
+        <property name="plannedamt" type="big_decimal">
+            <column name="plannedamt" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="level" type="java.lang.Byte">
+            <column name="level" precision="2" scale="0" />
+        </property>
+        <property name="sign" type="string">
+            <column name="sign" length="1" />
+        </property>
+        <property name="key" type="string">
+            <column name="key" length="30" />
+        </property>
+        <property name="phasekey" type="string">
+            <column name="phasekey" length="30" />
+        </property>
+        <property name="uniqueid" type="java.lang.Long">
+            <column name="uniqueid" precision="10" scale="0" />
+        </property>
+        <property name="unit" type="string">
+            <column name="unit" length="8" />
+        </property>
+    </class>
+</hibernate-mapping>

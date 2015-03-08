@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.CConcepto" table="c_concepto" schema="adempiere">
+        <id name="CConceptoId" type="big_decimal">
+            <column name="c_concepto_id" precision="20" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="CObra" class="com.mx.nibble.domain.CObra" fetch="select">
+            <column name="c_obra_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="CPartida" class="com.mx.nibble.domain.CPartida" fetch="select">
+            <column name="c_partida_id" precision="20" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="clavePartida" type="string">
+            <column name="clave_partida" length="20" />
+        </property>
+        <property name="claveConcepto" type="string">
+            <column name="clave_concepto" length="20" />
+        </property>
+        <property name="conceptoPrefijoId" type="java.lang.Integer">
+            <column name="concepto_prefijo_id" precision="5" scale="0" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" />
+        </property>
+        <property name="unidad" type="string">
+            <column name="unidad" length="8" />
+        </property>
+        <property name="cantidad" type="big_decimal">
+            <column name="cantidad" precision="20" scale="0" />
+        </property>
+        <property name="costoUnitario" type="big_decimal">
+            <column name="costo_unitario" precision="20" scale="0" />
+        </property>
+        <property name="importeTotal" type="big_decimal">
+            <column name="importe_total" precision="20" scale="0" />
+        </property>
+        <property name="adUserId" type="java.lang.Long">
+            <column name="ad_user_id" precision="10" scale="0" />
+        </property>
+        <property name="isactive" type="java.lang.Character">
+            <column name="isactive" length="1" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" />
+        </property>
+        <property name="createdby" type="java.lang.Long">
+            <column name="createdby" precision="10" scale="0" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" />
+        </property>
+        <property name="updatedby" type="java.lang.Long">
+            <column name="updatedby" precision="10" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

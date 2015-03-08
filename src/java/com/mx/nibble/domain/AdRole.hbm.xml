@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdRole" table="ad_role" schema="adempiere">
+        <id name="adRoleId" type="long">
+            <column name="ad_role_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="adTreeByAdTreeOrgId" class="com.mx.nibble.domain.AdTree" fetch="select">
+            <column name="ad_tree_org_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="CCurrency" class="com.mx.nibble.domain.CCurrency" fetch="select">
+            <column name="c_currency_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adTreeByAdTreeMenuId" class="com.mx.nibble.domain.AdTree" fetch="select">
+            <column name="ad_tree_menu_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adUser" class="com.mx.nibble.domain.AdUser" fetch="select">
+            <column name="supervisor_id" precision="10" scale="0" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="userlevel" type="string">
+            <column name="userlevel" length="3" not-null="true" />
+        </property>
+        <property name="amtapproval" type="big_decimal">
+            <column name="amtapproval" precision="131089" scale="0" />
+        </property>
+        <property name="ismanual" type="char">
+            <column name="ismanual" length="1" not-null="true" />
+        </property>
+        <property name="isshowacct" type="char">
+            <column name="isshowacct" length="1" not-null="true" />
+        </property>
+        <property name="ispersonallock" type="char">
+            <column name="ispersonallock" length="1" not-null="true" />
+        </property>
+        <property name="ispersonalaccess" type="char">
+            <column name="ispersonalaccess" length="1" not-null="true" />
+        </property>
+        <property name="iscanexport" type="char">
+            <column name="iscanexport" length="1" not-null="true" />
+        </property>
+        <property name="iscanreport" type="char">
+            <column name="iscanreport" length="1" not-null="true" />
+        </property>
+        <property name="iscanapproveowndoc" type="char">
+            <column name="iscanapproveowndoc" length="1" not-null="true" />
+        </property>
+        <property name="isaccessallorgs" type="char">
+            <column name="isaccessallorgs" length="1" not-null="true" />
+        </property>
+        <property name="ischangelog" type="char">
+            <column name="ischangelog" length="1" not-null="true" />
+        </property>
+        <property name="preferencetype" type="char">
+            <column name="preferencetype" length="1" not-null="true" />
+        </property>
+        <property name="overwritepricelimit" type="char">
+            <column name="overwritepricelimit" length="1" not-null="true" />
+        </property>
+        <property name="isuseuserorgaccess" type="char">
+            <column name="isuseuserorgaccess" length="1" not-null="true" />
+        </property>
+        <property name="confirmqueryrecords" type="long">
+            <column name="confirmqueryrecords" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="maxqueryrecords" type="long">
+            <column name="maxqueryrecords" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="connectionprofile" type="java.lang.Character">
+            <column name="connectionprofile" length="1" />
+        </property>
+        <property name="allowInfoAccount" type="char">
+            <column name="allow_info_account" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoAsset" type="char">
+            <column name="allow_info_asset" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoBpartner" type="char">
+            <column name="allow_info_bpartner" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoCashjournal" type="char">
+            <column name="allow_info_cashjournal" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoInout" type="char">
+            <column name="allow_info_inout" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoInvoice" type="char">
+            <column name="allow_info_invoice" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoOrder" type="char">
+            <column name="allow_info_order" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoPayment" type="char">
+            <column name="allow_info_payment" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoProduct" type="char">
+            <column name="allow_info_product" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoResource" type="char">
+            <column name="allow_info_resource" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoSchedule" type="char">
+            <column name="allow_info_schedule" length="1" not-null="true" />
+        </property>
+        <property name="userdiscount" type="big_decimal">
+            <column name="userdiscount" precision="22" scale="0" />
+        </property>
+        <property name="allowInfoMrp" type="char">
+            <column name="allow_info_mrp" length="1" not-null="true" />
+        </property>
+        <property name="allowInfoCrp" type="char">
+            <column name="allow_info_crp" length="1" not-null="true" />
+        </property>
+        <property name="isdiscountuptolimitprice" type="char">
+            <column name="isdiscountuptolimitprice" length="1" not-null="true" />
+        </property>
+        <property name="isdiscountallowedontotal" type="char">
+            <column name="isdiscountallowedontotal" length="1" not-null="true" />
+        </property>
+        <set name="adWfResponsibles" table="ad_wf_responsible" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_role_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfResponsible" />
+        </set>
+        <set name="adRoleIncludedsForAdRoleId" table="ad_role_included" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_role_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdRoleIncluded" />
+        </set>
+        <set name="adRoleOrgaccesses" table="ad_role_orgaccess" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_role_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdRoleOrgaccess" />
+        </set>
+        <set name="adRoleIncludedsForIncludedRoleId" table="ad_role_included" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="included_role_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdRoleIncluded" />
+        </set>
+        <set name="adUserRoleses" table="ad_user_roles" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_role_id" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdUserRoles" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdUserOrgaccess" table="ad_user_orgaccess" schema="adempiere">
+        <composite-id name="id" class="com.mx.nibble.domain.AdUserOrgaccessId">
+            <key-property name="adUserId" type="long">
+                <column name="ad_user_id" precision="10" scale="0" />
+            </key-property>
+            <key-property name="adOrgId" type="long">
+                <column name="ad_org_id" precision="10" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="adUser" class="com.mx.nibble.domain.AdUser" update="false" insert="false" fetch="select">
+            <column name="ad_user_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" update="false" insert="false" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isreadonly" type="char">
+            <column name="isreadonly" length="1" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

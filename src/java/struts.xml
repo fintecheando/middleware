@@ -1,0 +1,84 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+        <constant name="struts.custom.i18n.resources" value="global" />
+ 	<constant name="struts.devMode" value="false" />
+        <constant name="struts.action.excludePattern" value="/FileUpload"/>
+        
+	<package name="default" extends="hibernate-default,json-default">
+            <interceptors>
+                    
+                <interceptor name="hibernateSessionInterceptor" class="com.googlecode.s2hibernate.struts2.plugin.interceptors.SessionTransactionInjectorInterceptor" />
+                <interceptor name="hibernateValidatorInterceptor" class="com.googlecode.s2hibernate.struts2.plugin.s2hibernatevalidator.interceptor.HibernateValidatorInterceptor">
+                    <param name="excludeMethods">input,prepare,back,cancel,browse</param>
+                </interceptor>
+                
+                <interceptor class="com.mx.nibble.middleware.web.util.LoginInterceptor" name="loginInterceptor"/>
+                <!-- <interceptor class="com.mx.hsbc.esa.middleware.web.util.PollenFileUploadInterceptor" name="customFileUploadInterceptor"/>-->
+                
+                <interceptor-stack name="defaultLoginStack">
+                    <interceptor-ref name="servletConfig" />
+                    <interceptor-ref name="params" />
+                    <interceptor-ref name="loginInterceptor" /> <!-- Login interceptor -->
+                    <!-- <interceptor-ref name="customFileUploadInterceptor" /> FileUploadInterceptor interceptor -->
+                    <interceptor-ref name="hibernateSessionInterceptor" />
+                    <interceptor-ref name="hibernateValidatorInterceptor" />
+                    <interceptor-ref name="prepare" />
+                    <interceptor-ref name="chain" />
+                    <interceptor-ref name="modelDriven" />
+                    <interceptor-ref name="fileUpload" />
+                    <interceptor-ref name="staticParams" />
+                    <interceptor-ref name="actionMappingParams"/>
+                    <interceptor-ref name="params" />
+                    <interceptor-ref name="conversionError" />
+                    <interceptor-ref name="validation" />
+                    <interceptor-ref name="workflow" />
+                </interceptor-stack>
+            </interceptors>
+            
+             <!-- Make the defaultLoginStack the default one used
+                    for all actions unless otherwise configured. -->
+            <default-interceptor-ref name="defaultLoginStack" />
+            <!--<default-action-ref name="login" />-->
+                <global-results>  
+                    <result name="login">login.jsp</result>
+                </global-results>
+
+                <action class="com.mx.nibble.middleware.web.LoginAction" name="loginAuthenticaion" >
+                    <result name="login-success">index.jsp</result>
+                    <result name="input">login.jsp</result>
+                </action>
+
+                <action class="com.mx.nibble.middleware.web.LogoutAction" name="logout">
+                    <result name="logout">login.jsp</result>
+                </action>
+                
+            
+                
+                
+                
+                <action name="fileImport" class="com.mx.nibble.middleware.web.util.FilePreUpload" method="display">
+                    <result name="none">upload/upload.jsp</result>
+                </action>
+                
+                <action name ="FileUpload" class ="com.mx.nibble.middleware.web.util.FileUploadAction" method="upload">
+			<param name="savePath">/opt/cyssa/erp/import/obras</param>
+			<result name ="success">upload/result.jsp</result> 
+                </action >
+                <action name ="Submit" class ="com.mx.nibble.middleware.web.util.FileUploadAction" method="submit">
+                        <param name="savePath">/opt/cyssa/erp/import/obras</param>
+                    <result name ="success">upload/result.jsp</result>
+                </action >
+                <action name ="CargarDatosEnAdempiere" class ="com.mx.nibble.middleware.web.util.FileUploadAction" method="cargar">
+                        <param name="savePath">/opt/cyssa/erp/import/obras</param>
+                    <result name ="success">upload/status.jsp</result>
+                    <result name ="error">upload/status.jsp</result>
+                </action >
+                
+                <action name="listAll" method="list" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
+                    <result type="json" />
+                </action >
+	</package>
+</struts>

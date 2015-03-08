@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdWfNode" table="ad_wf_node" schema="adempiere">
+        <id name="adWfNodeId" type="long">
+            <column name="ad_wf_node_id" precision="10" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <many-to-one name="CBpartner" class="com.mx.nibble.domain.CBpartner" fetch="select">
+            <column name="c_bpartner_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adWfResponsible" class="com.mx.nibble.domain.AdWfResponsible" fetch="select">
+            <column name="ad_wf_responsible_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="SResource" class="com.mx.nibble.domain.SResource" fetch="select">
+            <column name="s_resource_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adWorkflowByAdWorkflowId" class="com.mx.nibble.domain.AdWorkflow" fetch="select">
+            <column name="ad_workflow_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adProcess" class="com.mx.nibble.domain.AdProcess" fetch="select">
+            <column name="ad_process_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adForm" class="com.mx.nibble.domain.AdForm" fetch="select">
+            <column name="ad_form_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adOrg" class="com.mx.nibble.domain.AdOrg" fetch="select">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adEntitytype" class="com.mx.nibble.domain.AdEntitytype" fetch="select">
+            <column name="entitytype" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adTask" class="com.mx.nibble.domain.AdTask" fetch="select">
+            <column name="ad_task_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adWorkflowByWorkflowId" class="com.mx.nibble.domain.AdWorkflow" fetch="select">
+            <column name="workflow_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adClient" class="com.mx.nibble.domain.AdClient" fetch="select">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="adWindow" class="com.mx.nibble.domain.AdWindow" fetch="select">
+            <column name="ad_window_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adImage" class="com.mx.nibble.domain.AdImage" fetch="select">
+            <column name="ad_image_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adColumn" class="com.mx.nibble.domain.AdColumn" fetch="select">
+            <column name="ad_column_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="adWfBlock" class="com.mx.nibble.domain.AdWfBlock" fetch="select">
+            <column name="ad_wf_block_id" precision="10" scale="0" />
+        </many-to-one>
+        <many-to-one name="RMailtext" class="com.mx.nibble.domain.RMailtext" fetch="select">
+            <column name="r_mailtext_id" precision="10" scale="0" />
+        </many-to-one>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="help" type="string">
+            <column name="help" length="2000" />
+        </property>
+        <property name="iscentrallymaintained" type="char">
+            <column name="iscentrallymaintained" length="1" not-null="true" />
+        </property>
+        <property name="action" type="char">
+            <column name="action" length="1" not-null="true" />
+        </property>
+        <property name="xposition" type="long">
+            <column name="xposition" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="yposition" type="long">
+            <column name="yposition" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="subflowexecution" type="java.lang.Character">
+            <column name="subflowexecution" length="1" />
+        </property>
+        <property name="startmode" type="java.lang.Character">
+            <column name="startmode" length="1" />
+        </property>
+        <property name="finishmode" type="java.lang.Character">
+            <column name="finishmode" length="1" />
+        </property>
+        <property name="limit" type="long">
+            <column name="limit" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="priority" type="java.lang.Long">
+            <column name="priority" precision="10" scale="0" />
+        </property>
+        <property name="duration" type="long">
+            <column name="duration" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="cost" type="big_decimal">
+            <column name="cost" precision="131089" scale="0" not-null="true" />
+        </property>
+        <property name="workingtime" type="java.lang.Long">
+            <column name="workingtime" precision="10" scale="0" />
+        </property>
+        <property name="waitingtime" type="long">
+            <column name="waitingtime" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="joinelement" type="char">
+            <column name="joinelement" length="1" not-null="true" />
+        </property>
+        <property name="splitelement" type="char">
+            <column name="splitelement" length="1" not-null="true" />
+        </property>
+        <property name="waittime" type="java.lang.Long">
+            <column name="waittime" precision="10" scale="0" />
+        </property>
+        <property name="attributename" type="string">
+            <column name="attributename" length="60" />
+        </property>
+        <property name="attributevalue" type="string">
+            <column name="attributevalue" length="60" />
+        </property>
+        <property name="docaction" type="string">
+            <column name="docaction" length="2" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="40" not-null="true" />
+        </property>
+        <property name="dynpriorityunit" type="java.lang.Character">
+            <column name="dynpriorityunit" length="1" />
+        </property>
+        <property name="dynprioritychange" type="big_decimal">
+            <column name="dynprioritychange" precision="131089" scale="0" />
+        </property>
+        <property name="emailrecipient" type="java.lang.Character">
+            <column name="emailrecipient" length="1" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="60" />
+        </property>
+        <property name="validto" type="timestamp">
+            <column name="validto" length="29" />
+        </property>
+        <property name="ismilestone" type="java.lang.Character">
+            <column name="ismilestone" length="1" />
+        </property>
+        <property name="issubcontracting" type="java.lang.Character">
+            <column name="issubcontracting" length="1" />
+        </property>
+        <property name="unitscycles" type="big_decimal">
+            <column name="unitscycles" precision="131089" scale="0" />
+        </property>
+        <property name="movingtime" type="java.lang.Long">
+            <column name="movingtime" precision="10" scale="0" />
+        </property>
+        <property name="overlapunits" type="java.lang.Long">
+            <column name="overlapunits" precision="10" scale="0" />
+        </property>
+        <property name="queuingtime" type="java.lang.Long">
+            <column name="queuingtime" precision="10" scale="0" />
+        </property>
+        <property name="setuptime" type="java.lang.Long">
+            <column name="setuptime" precision="10" scale="0" />
+        </property>
+        <property name="validfrom" type="timestamp">
+            <column name="validfrom" length="29" />
+        </property>
+        <property name="yield" type="java.lang.Long">
+            <column name="yield" precision="10" scale="0" />
+        </property>
+        <set name="adWorkflows" table="ad_workflow" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ad_wf_node_id" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWorkflow" />
+        </set>
+    </class>
+</hibernate-mapping>

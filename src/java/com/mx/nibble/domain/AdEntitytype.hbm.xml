@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 19, 2014 6:33:59 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.mx.nibble.domain.AdEntitytype" table="ad_entitytype" schema="adempiere">
+        <id name="entitytype" type="string">
+            <column name="entitytype" length="40" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="version" type="string">
+            <column name="version" length="20" />
+        </property>
+        <property name="adClientId" type="long">
+            <column name="ad_client_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adOrgId" type="long">
+            <column name="ad_org_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="adEntitytypeId" type="long">
+            <column name="ad_entitytype_id" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="isactive" type="char">
+            <column name="isactive" length="1" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="created" length="29" not-null="true" />
+        </property>
+        <property name="createdby" type="long">
+            <column name="createdby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="updated" type="timestamp">
+            <column name="updated" length="29" not-null="true" />
+        </property>
+        <property name="updatedby" type="long">
+            <column name="updatedby" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="help" type="string">
+            <column name="help" length="2000" />
+        </property>
+        <property name="modelpackage" type="string">
+            <column name="modelpackage" />
+        </property>
+        <property name="classpath" type="string">
+            <column name="classpath" />
+        </property>
+        <property name="processing" type="java.lang.Character">
+            <column name="processing" length="1" />
+        </property>
+        <set name="adProcesses" table="ad_process" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdProcess" />
+        </set>
+        <set name="adWindows" table="ad_window" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWindow" />
+        </set>
+        <set name="adReplicationstrategies" table="ad_replicationstrategy" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdReplicationstrategy" />
+        </set>
+        <set name="adWfResponsibles" table="ad_wf_responsible" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfResponsible" />
+        </set>
+        <set name="adWorkflows" table="ad_workflow" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWorkflow" />
+        </set>
+        <set name="adReferences" table="ad_reference" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdReference" />
+        </set>
+        <set name="adTables" table="ad_table" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdTable" />
+        </set>
+        <set name="adColumns" table="ad_column" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdColumn" />
+        </set>
+        <set name="adValRules" table="ad_val_rule" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdValRule" />
+        </set>
+        <set name="adImages" table="ad_image" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdImage" />
+        </set>
+        <set name="adWfNodes" table="ad_wf_node" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWfNode" />
+        </set>
+        <set name="adWorkbenches" table="ad_workbench" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdWorkbench" />
+        </set>
+        <set name="adTasks" table="ad_task" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdTask" />
+        </set>
+        <set name="adMenus" table="ad_menu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdMenu" />
+        </set>
+        <set name="adForms" table="ad_form" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdForm" />
+        </set>
+        <set name="adElements" table="ad_element" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdElement" />
+        </set>
+        <set name="adReportviews" table="ad_reportview" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="entitytype" length="40" not-null="true" />
+            </key>
+            <one-to-many class="com.mx.nibble.domain.AdReportview" />
+        </set>
+    </class>
+</hibernate-mapping>
