@@ -77,7 +77,7 @@
                     <result name ="error">upload/status.jsp</result>
                 </action >
                 
-                <action name="listAll" method="list" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
+                <action name="listAllCProjects" method="list" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
                     <result type="json" />
                 </action >
 	</package>

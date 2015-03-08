@@ -25,7 +25,7 @@ Ext.onReady(function(){
 
         proxy: {
             type: 'ajax',
-            url: 'listAll.action',
+            url: 'listAllCProjects.action',
             reader: {
                 type: 'json',
                 rootProperty: 'projects'
