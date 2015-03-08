@@ -103,5 +103,6 @@
     <mapping resource="com/mx/nibble/domain/CCurrency.hbm.xml"/>
     <mapping resource="com/mx/nibble/domain/AdWfResponsible.hbm.xml"/>
     <mapping resource="com/mx/nibble/domain/ExpProcessorType.hbm.xml"/>
+    <mapping resource="com/mx/nibble/domain/CCivilWorkConcept.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

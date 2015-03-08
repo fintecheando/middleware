@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *
  * @author victor
  */
-public class financeReport extends ActionSupport{
+public class CivilWorkConceptAction extends ActionSupport{
  
 	public String execute() {
 		return SUCCESS;

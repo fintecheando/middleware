@@ -77,8 +77,12 @@
                     <result name ="error">upload/status.jsp</result>
                 </action >
                 
-                <action name="financeReport" class="com.mx.nibble.middleware.web.financeReport">
+                <action name="financeReport" class="com.mx.nibble.middleware.web.FinanceReportAction">
                     <result name="success">financeReport.jsp</result>
+                </action>
+                
+                <action name="civilWorkConcept" class="com.mx.nibble.middleware.web.CivilWorkConceptAction">
+                    <result name="success">obra/CivilWorkConcept.jsp</result>
                 </action>
                 
                 <action name="listAllCProjects" method="list" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
