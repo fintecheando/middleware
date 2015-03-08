@@ -6,7 +6,7 @@
 <%@page import="java.util.Date"%><html>
     
 <head>
-<title>CYSSA - Herramienta para Importar Archivos de Opus</title>
+<title>Grupo CYSSA</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="shortcut icon" href="favicon.ico" />
 </head>
