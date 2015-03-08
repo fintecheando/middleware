@@ -81,12 +81,22 @@
                     <result name="success">financeReport.jsp</result>
                 </action>
                 
+                 <action name="listAllCProjects" method="list" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
+                    <result type="json" />
+                </action >
+                <!-- Civil Work Concepts-->
                 <action name="civilWorkConcept" class="com.mx.nibble.middleware.web.CivilWorkConceptAction">
                     <result name="success">obra/CivilWorkConcept.jsp</result>
                 </action>
-                
-                <action name="listAllCProjects" method="list" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
+                <action name="listAllCivilWorkConcepts" method="list" class="com.mx.nibble.middleware.web.json.CCivilWorkConceptJSONAction">
                     <result type="json" />
                 </action >
+                <action name="deleteCivilWorkConcepts" method="delete" class="com.mx.nibble.middleware.web.json.CCivilWorkConceptJSONAction">
+                    <result type="json" />
+                </action >
+                <action name="saveOrUpdateCivilWorkConcepts" method="saveOrUpdate" class="com.mx.nibble.middleware.web.json.CCivilWorkConceptJSONAction">
+                    <result type="json" />
+                </action >
+               
 	</package>
 </struts>

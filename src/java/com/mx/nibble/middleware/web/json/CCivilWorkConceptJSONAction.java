@@ -22,14 +22,23 @@ public class CCivilWorkConceptJSONAction extends ActionSupport {
 *
 */
 private static final long serialVersionUID = 1L;
-private List<CCivilWorkConcept> civilWorkConcept = null;
+private CCivilWorkConcept civilWorkConcept = null;
+private List<CCivilWorkConcept> civilWorkConcepts = null;
 private CivilWorkConceptDAO civilWorkConceptDao = new CivilWorkConceptDAOImpl();
 private boolean success;
 
     public String list() {
-        setCivilWorkConcept(civilWorkConceptDao.listCivilWorkConcept());
+        setCivilWorkConcepts(civilWorkConceptDao.listCivilWorkConcept());
         setSuccess(true); //Se utiliza para indicar si la operación fue exitosa en este caso el valor por default es TRUE
         return SUCCESS;
+    }
+    
+    public void saveOrUpdate(CCivilWorkConcept civilWorkConcept){
+        civilWorkConceptDao.saveOrUpdateCivilWorkConcept(civilWorkConcept);
+    }
+    
+    public void delete(CCivilWorkConcept civilWorkConcept){        
+        civilWorkConceptDao.deleteCivilWorkConcept(civilWorkConcept);
     }
 
    
@@ -41,22 +50,37 @@ private boolean success;
         this.success = success;
     }
 
-    
-
     /**
      * @return the civilWorkConcept
      */
-    public List<CCivilWorkConcept> getCivilWorkConcept() {
+    public CCivilWorkConcept getCivilWorkConcept() {
         return civilWorkConcept;
     }
 
     /**
      * @param civilWorkConcept the civilWorkConcept to set
      */
-    public void setCivilWorkConcept(List<CCivilWorkConcept> civilWorkConcept) {
+    public void setCivilWorkConcept(CCivilWorkConcept civilWorkConcept) {
         this.civilWorkConcept = civilWorkConcept;
     }
 
+    /**
+     * @return the civilWorkConcepts
+     */
+    public List<CCivilWorkConcept> getCivilWorkConcepts() {
+        return civilWorkConcepts;
+    }
+
+    /**
+     * @param civilWorkConcepts the civilWorkConcepts to set
+     */
+    public void setCivilWorkConcepts(List<CCivilWorkConcept> civilWorkConcepts) {
+        this.civilWorkConcepts = civilWorkConcepts;
+    }
+
+    
+
+    
    
 
 } 

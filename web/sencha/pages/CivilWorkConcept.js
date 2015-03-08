@@ -328,10 +328,10 @@ Ext.onReady(function(){
         proxy: {
             type: 'ajax',
             api: {
-                read: 'app.php/users/view',
-                create: 'app.php/users/create',
-                update: 'app.php/users/update',
-                destroy: 'app.php/users/destroy'
+                read: 'listAllCivilWorkConcepts.action',
+                create: 'saveOrUpdateCivilWorkConcepts.action',
+                update: 'saveOrUpdateCivilWorkConcepts.action',
+                destroy: 'deleteCivilWorkConcepts.action'
             },
             reader: {
                 type: 'json',
