@@ -16,6 +16,9 @@
                 </interceptor>
                 
                 <interceptor class="com.mx.nibble.middleware.web.util.LoginInterceptor" name="loginInterceptor"/>
+                        
+                <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+            
                 <!-- <interceptor class="com.mx.hsbc.esa.middleware.web.util.PollenFileUploadInterceptor" name="customFileUploadInterceptor"/>-->
                 
                 <interceptor-stack name="defaultLoginStack">
@@ -35,6 +38,12 @@
                     <interceptor-ref name="conversionError" />
                     <interceptor-ref name="validation" />
                     <interceptor-ref name="workflow" />
+                    
+                    
+                    <interceptor-ref name="json">
+                        <param name="enableSMD">true</param>
+                    </interceptor-ref>
+                    <interceptor-ref name="jsonValidationWorkflowStack"></interceptor-ref>  
                 </interceptor-stack>
             </interceptors>
             
@@ -94,8 +103,8 @@
                 <action name="deleteCivilWorkConcepts" method="delete" class="com.mx.nibble.middleware.web.json.CCivilWorkConceptJSONAction">
                     <result type="json" />
                 </action >
-                <action name="saveOrUpdateCivilWorkConcepts" method="saveOrUpdate" class="com.mx.nibble.middleware.web.json.CCivilWorkConceptJSONAction">
-                    <result type="json" />
+                <action name="saveOrUpdateCivilWorkConcepts" method="saveOrUpdate" class="com.mx.nibble.middleware.web.json.CCivilWorkConceptJSONAction">                    
+                    <result type="json"/>
                 </action >
                
 	</package>

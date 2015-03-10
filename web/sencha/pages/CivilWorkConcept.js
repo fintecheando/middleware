@@ -17,17 +17,16 @@ Ext.define('Writer.Form', {
                 labelAlign: 'right'
             },
             items: [{
-                fieldLabel: 'Tipo de Concepto',
-                name: 'email',
-                allowBlank: false,
-                vtype: 'email'
-            }, {
-                fieldLabel: 'Descripcion',
-                name: 'first',
+                fieldLabel: 'Tipo',
+                name: 'type',
                 allowBlank: false
             }, {
-                fieldLabel: 'Clave',
-                name: 'last',
+                fieldLabel: 'Nombre',
+                name: 'name',
+                allowBlank: false
+            }, {
+                fieldLabel: 'Codigo',
+                name: 'code',
                 allowBlank: false
             }],
             dockedItems: [{
@@ -37,18 +36,18 @@ Ext.define('Writer.Form', {
                 items: ['->', {
                     iconCls: 'icon-save',
                     itemId: 'save',
-                    text: 'Guardar',
+                    text: 'Salvar',
                     disabled: true,
                     scope: this,
                     handler: this.onSave
                 }, {
                     iconCls: 'icon-user-add',
-                    text: 'Nuevo',
+                    text: 'Crear',
                     scope: this,
                     handler: this.onCreate
                 }, {
                     iconCls: 'icon-reset',
-                    text: 'Deshacer',
+                    text: 'Resetear',
                     scope: this,
                     handler: this.onReset
                 }]
@@ -124,7 +123,7 @@ Ext.define('Writer.Grid', {
                     handler: this.onAddClick
                 }, {
                     iconCls: 'icon-delete',
-                    text: 'Eliminar',
+                    text: 'Borrar',
                     disabled: true,
                     itemId: 'delete',
                     scope: this,
@@ -185,31 +184,31 @@ Ext.define('Writer.Grid', {
                 draggable: false,
                 hideable: false,
                 menuDisabled: true,
-                dataIndex: 'id',
+                dataIndex: 'CCivilWorkConceptId',
                 renderer: function(value){
                     return Ext.isNumber(value) ? value : '&nbsp;';
                 }
             }, {
-                header: 'Tipo de Concepto',
+                header: 'Tipo',
                 flex: 1,
                 sortable: true,
-                dataIndex: 'email',
+                dataIndex: 'type',
                 field: {
                     type: 'textfield'
                 }
             }, {
-                header: 'Descripcion',
+                header: 'Nombre',
                 width: 100,
                 sortable: true,
-                dataIndex: 'first',
+                dataIndex: 'name',
                 field: {
                     type: 'textfield'
                 }
             }, {
-                header: 'Clave',
+                header: 'Codigo',
                 width: 100,
                 sortable: true,
-                dataIndex: 'last',
+                dataIndex: 'code',
                 field: {
                     type: 'textfield'
                 }
@@ -235,10 +234,10 @@ Ext.define('Writer.Grid', {
     },
 
     onAddClick: function(){
-        var rec = new Writer.Person({
-            first: '',
-            last: '',
-            email: ''
+        var rec = new Writer.CCivilWorkConcept({
+            name: '',
+            type: '',
+            code: ''
         }), edit = this.editing;
 
         edit.cancelEdit();
@@ -250,23 +249,23 @@ Ext.define('Writer.Grid', {
     }
 });
 
-Ext.define('Writer.Person', {
+Ext.define('Writer.CCivilWorkConcept', {
     extend: 'Ext.data.Model',
     fields: [{
-        name: 'id',
+        name: 'CCivilWorkConceptId',
         type: 'int',
         useNull: true
-    }, 'email', 'first', 'last'],
+    }, 'name', 'type', 'code'],
     validators: {
-        email: {
+        name: {
             type: 'length',
             min: 1
         },
-        first: {
+        type: {
             type: 'length',
             min: 1
         },
-        last: {
+        code: {
             type: 'length',
             min: 1
         }
@@ -282,47 +281,8 @@ Ext.require([
 Ext.onReady(function(){
     Ext.tip.QuickTipManager.init();
     
-    Ext.create('Ext.button.Button', {
-        margin: '0 0 20 20',
-        text: 'Reset sample database back to initial state',
-        renderTo: document.body,
-        tooltip: 'The sample database is stored in the session, including any changes you make. Click this button to reset the sample database to the initial state',
-        handler: function(){
-            Ext.getBody().mask('Resetting...');
-            Ext.Ajax.request({
-                url: 'app.php/example/reset',
-                callback: function(options, success, response) {
-                    Ext.getBody().unmask();
-                    
-                    var didReset = true,
-                        o;
-                    
-                    if (success) {
-                        try {
-                            o = Ext.decode(response.responseText);
-                            didReset = o.success === true;
-                        } catch (e) {
-                            didReset = false;
-                        }
-                    } else {
-                        didReset = false;
-                    }
-                    
-                    if (didReset) {
-                        store.load();
-                        main.down('#form').setActiveRecord(null);
-                        Ext.example.msg('Reset', 'Reset successful');
-                    } else {
-                        Ext.MessageBox.alert('Error', 'Unable to reset example database');
-                    }
-                    
-                }
-            });
-        }
-    });
-    
     var store = Ext.create('Ext.data.Store', {
-        model: 'Writer.Person',
+        model: 'Writer.CCivilWorkConcept',
         autoLoad: true,
         autoSync: true,
         proxy: {
@@ -336,7 +296,7 @@ Ext.onReady(function(){
             reader: {
                 type: 'json',
                 successProperty: 'success',
-                root: 'data',
+                root: 'civilWorkConcepts',
                 messageProperty: 'message'
             },
             writer: {
@@ -387,7 +347,7 @@ Ext.onReady(function(){
         }, {
             itemId: 'grid',
             xtype: 'writergrid',
-            title: 'User List',
+            title: 'Conceptos de Obra',
             flex: 1,
             store: store,
             listeners: {
