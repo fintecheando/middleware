@@ -9,25 +9,22 @@ import com.mx.nibble.domain.CCivilWorkConcept;
 import com.mx.nibble.middleware.dao.CivilWorkConceptDAO;
 import com.mx.nibble.middleware.dao.CivilWorkConceptDAOImpl;
 import static com.opensymphony.xwork2.Action.SUCCESS;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.Enumeration;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 /**
  *
  * @author victor
  */
 public class CCivilWorkConceptJSONAction extends ActionSupport implements
-        SessionAware, ServletRequestAware, ServletResponseAware {
+        SessionAware {
 
 
 /**
@@ -46,7 +43,6 @@ private String code;
 private Map session;
 private HttpServletRequest request;
 private HttpServletResponse response;
-    
 
 //private List<CCivilWorkConcept> data;
 
@@ -58,26 +54,53 @@ private HttpServletResponse response;
     }
     
     public void saveOrUpdate(){
+        
+        try{
+            
+        civilWorkConcept = new CCivilWorkConcept();
+           
         System.out.println("ID A GUARDAR "+ this.getCCivilWorkConceptId());
         System.out.println("ID A getCode "+ this.getCode());
         System.out.println("ID A getName "+ this.getName());
         System.out.println("ID A getType "+ this.getType());
+        
+        
+        
         //System.out.println("DATOS DEL REQUEST "+ this.getData());  
         
         long ad_client_id = (Long)this.getSession().get("ad_client_id");
         long ad_org_id = (Long)this.getSession().get("ad_org_id");
         long ad_user_id = (Long)this.getSession().get("ad_user_id");
         
-        civilWorkConcept.setCCivilWorkConceptId(CCivilWorkConceptId);
+        System.out.println("ID A ad_client_id "+ ad_client_id);
+        System.out.println("ID A ad_org_id "+ ad_org_id);
+        System.out.println("ID A ad_user_id "+ ad_user_id);
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                Date date = new Date();
+                System.out.println(dateFormat.format(date));
+        
+        //civilWorkConcept.setCCivilWorkConceptId(this.getCCivilWorkConceptId());
         civilWorkConcept.setAdClientId(ad_client_id);
         civilWorkConcept.setAdOrgId(ad_org_id);
         civilWorkConcept.setCreatedby(ad_user_id);
         civilWorkConcept.setUpdatedby(ad_user_id);
+        civilWorkConcept.setCreated(date);
+        civilWorkConcept.setUpdated(date);
+        civilWorkConcept.setIsactive('Y');
         civilWorkConcept.setCode(this.getCode());
         civilWorkConcept.setName(this.getName());
         civilWorkConcept.setType(this.getType());
             
         civilWorkConceptDao.saveOrUpdateCivilWorkConcept(civilWorkConcept);
+        this.setSuccess(true);
+        this.setMessage("Created record!");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            this.setSuccess(false);
+            this.setMessage("Failed to create record "+e.getMessage());
+        }
     }
     
     public void delete(){        
@@ -246,14 +269,6 @@ private HttpServletResponse response;
         this.response = response;
     }
 
-    @Override
-    public void setServletRequest(HttpServletRequest req) {
-         this.request = req;
-    }
-
-    @Override
-    public void setServletResponse(HttpServletResponse resp) {
-        this.response = resp;
-    }
+   
 
 }
