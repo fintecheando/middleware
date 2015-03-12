@@ -43,7 +43,7 @@ private long CCivilWorkConceptId;
 private String name;
 private String type;
 private String code;
-
+private Map session;
 
 //private List<CCivilWorkConcept> data;
 
@@ -59,8 +59,13 @@ private String code;
         System.out.println("ID A getCode "+ this.getCode());
         System.out.println("ID A getName "+ this.getName());
         System.out.println("ID A getType "+ this.getType());
-        //System.out.println("DATOS DEL REQUEST "+ this.getData());        
-        civilWorkConcept.setAdClientId(this);
+        //System.out.println("DATOS DEL REQUEST "+ this.getData());  
+        
+        long ad_client_id = (Long)this.getSession().get("ad_client_id");
+                long ad_org_id = (Long)this.getSession().get("ad_org_id");
+                long ad_user_id = (Long)this.getSession().get("ad_user_id");
+                
+        civilWorkConcept.setAdClientId(this.getSession());
         civilWorkConcept.setCode(this.getCode());
         civilWorkConcept.setName(this.getName());
         civilWorkConcept.setType(this.getType());
@@ -205,6 +210,13 @@ private String code;
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * @return the session
+     */
+    public Map getSession() {
+        return session;
     }
 
     }
