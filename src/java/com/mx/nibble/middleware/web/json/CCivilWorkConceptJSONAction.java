@@ -9,12 +9,15 @@ import com.mx.nibble.domain.CCivilWorkConcept;
 import com.mx.nibble.middleware.dao.CivilWorkConceptDAO;
 import com.mx.nibble.middleware.dao.CivilWorkConceptDAOImpl;
 import static com.opensymphony.xwork2.Action.SUCCESS;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.io.BufferedReader;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 /**
  *
@@ -37,7 +40,8 @@ private String name;
 private String type;
 private String code;
 
-private List<CCivilWorkConcept> data;
+
+//private List<CCivilWorkConcept> data;
 
 @Override
 public void setServletRequest(HttpServletRequest servletRequest) {
@@ -53,35 +57,26 @@ public void setServletRequest(HttpServletRequest servletRequest) {
     
     public void saveOrUpdate(){
         System.out.println("ID A GUARDAR "+ this.getCCivilWorkConceptId());
-        System.out.println("DATOS DEL REQUEST "+ this.getData());
-        try{        
-        // Read from request
-        StringBuilder buffer = new StringBuilder();
-        BufferedReader reader = request.getReader();
-        String line;
+        System.out.println("ID A getCode "+ this.getCode());
+        System.out.println("ID A getName "+ this.getName());
+        System.out.println("ID A getType "+ this.getType());
+        //System.out.println("DATOS DEL REQUEST "+ this.getData());        
         
-        while ((line = reader.readLine()) != null) {
-            buffer.append(line);
-        }
-        String data = buffer.toString();
-        System.out.println(data);
-        }
-        catch(Exception e){e.printStackTrace();}
-        
-        Enumeration al = request.getParameterNames();
-       while(al.hasMoreElements()){
-        String param = (String) al.nextElement();
-        System.out.println(param);
-        }
+        civilWorkConcept.setCode(this.getCode());
+        civilWorkConcept.setName(this.getName());
+        civilWorkConcept.setType(this.getType());
             
         civilWorkConceptDao.saveOrUpdateCivilWorkConcept(civilWorkConcept);
     }
     
     public void delete(){        
         this.getCCivilWorkConceptId();        
+        this.getCode();
+        this.getName();
+        this.getCode();
         System.out.println("ID A BORRAR "+ this.getCCivilWorkConceptId());
-        System.out.println("DATOS DEL REQUEST "+ this.getData());
-        //civilWorkConceptDao.deleteCivilWorkConcept(civilWorkConcept);
+        
+        civilWorkConceptDao.deleteCivilWorkConcept(civilWorkConcept);
     }
 
    
@@ -197,20 +192,5 @@ public void setServletRequest(HttpServletRequest servletRequest) {
     public void setCode(String code) {
         this.code = code;
     }
-
-    /**
-     * @return the data
-     */
-    public List<CCivilWorkConcept> getData() {
-        return data;
-    }
-
-    /**
-     * @param data the data to set
-     */
-    public void setData(List<CCivilWorkConcept> data) {
-        this.data = data;
-    }
-
 
     }
