@@ -44,6 +44,9 @@ private String name;
 private String type;
 private String code;
 private Map session;
+private HttpServletRequest request;
+private HttpServletResponse response;
+    
 
 //private List<CCivilWorkConcept> data;
 
@@ -62,10 +65,14 @@ private Map session;
         //System.out.println("DATOS DEL REQUEST "+ this.getData());  
         
         long ad_client_id = (Long)this.getSession().get("ad_client_id");
-                long ad_org_id = (Long)this.getSession().get("ad_org_id");
-                long ad_user_id = (Long)this.getSession().get("ad_user_id");
-                
-        civilWorkConcept.setAdClientId(this.getSession());
+        long ad_org_id = (Long)this.getSession().get("ad_org_id");
+        long ad_user_id = (Long)this.getSession().get("ad_user_id");
+        
+        civilWorkConcept.setCCivilWorkConceptId(CCivilWorkConceptId);
+        civilWorkConcept.setAdClientId(ad_client_id);
+        civilWorkConcept.setAdOrgId(ad_org_id);
+        civilWorkConcept.setCreatedby(ad_user_id);
+        civilWorkConcept.setUpdatedby(ad_user_id);
         civilWorkConcept.setCode(this.getCode());
         civilWorkConcept.setName(this.getName());
         civilWorkConcept.setType(this.getType());
@@ -197,21 +204,6 @@ private Map session;
         this.code = code;
     }
 
-    @Override
-    public void setSession(Map<String, Object> map) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setServletResponse(HttpServletResponse hsr) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setServletRequest(HttpServletRequest hsr) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     /**
      * @return the session
      */
@@ -219,4 +211,49 @@ private Map session;
         return session;
     }
 
+    /**
+     * @param session the session to set
+     */
+    public void setSession(Map sess) {
+        this.session = sess;
     }
+
+    /**
+     * @return the request
+     */
+    public HttpServletRequest getRequest() {
+        return request;
+    }
+
+    /**
+     * @param request the request to set
+     */
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
+    }
+
+    /**
+     * @return the response
+     */
+    public HttpServletResponse getResponse() {
+        return response;
+    }
+
+    /**
+     * @param response the response to set
+     */
+    public void setResponse(HttpServletResponse response) {
+        this.response = response;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest req) {
+         this.request = req;
+    }
+
+    @Override
+    public void setServletResponse(HttpServletResponse resp) {
+        this.response = resp;
+    }
+
+}

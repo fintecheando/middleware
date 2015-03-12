@@ -10,7 +10,7 @@ package com.mx.nibble.middleware.web.util;
  */
 public class ConstantParameters {
     
-    public static final Long PROCESSOR_COMPONENT_ID = new Long(1);
-    public static final Long SERVER_COMPONENT_ID = new Long(3);
+    public static final long PROCESSOR_COMPONENT_ID = 1;
+    public static final long SERVER_COMPONENT_ID = 3;
     
 }
