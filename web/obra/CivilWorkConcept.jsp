@@ -7,11 +7,13 @@
     <title>Data Binding Example</title>
 
     <link rel="stylesheet" type="text/css" href="sencha/shared/example.css" />
+    <link rel="stylesheet" type="text/css" href="sencha/shared/writer.css" />
 
     <!-- GC -->
 
     <script type="text/javascript" src="sencha/shared/include-ext.js"></script>
     <script type="text/javascript" src="sencha/shared/options-toolbar.js"></script>
+    <script type="text/javascript" src="sencha/shared/examples.js"></script>
 
     <!-- page specific -->
     

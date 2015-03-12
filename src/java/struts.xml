@@ -105,6 +105,9 @@
                 </action >
                 <action name="saveOrUpdateCivilWorkConcepts" method="saveOrUpdate" class="com.mx.nibble.middleware.web.json.CCivilWorkConceptJSONAction">                    
                     <result type="json"/>
+                    <param name="root">data</param>
+                    <param name="wrapPrefix">{"data":</param>
+                    <param name="wrapSuffix">}</param>
                 </action >
                
 	</package>
