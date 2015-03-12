@@ -15,7 +15,10 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
+import org.apache.struts2.interceptor.SessionAware;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -23,8 +26,9 @@ import org.json.simple.parser.JSONParser;
  *
  * @author victor
  */
-public class CCivilWorkConceptJSONAction extends ActionSupport  implements ServletRequestAware {
-private HttpServletRequest request;
+public class CCivilWorkConceptJSONAction extends ActionSupport implements
+        SessionAware, ServletRequestAware, ServletResponseAware {
+
 
 /**
 *
@@ -43,11 +47,6 @@ private String code;
 
 //private List<CCivilWorkConcept> data;
 
-@Override
-public void setServletRequest(HttpServletRequest servletRequest) {
-    // TODO Auto-generated method stub
-    this.request = servletRequest;
-}
 
     public String list() {
         setCivilWorkConcepts(civilWorkConceptDao.listCivilWorkConcept());
@@ -61,7 +60,7 @@ public void setServletRequest(HttpServletRequest servletRequest) {
         System.out.println("ID A getName "+ this.getName());
         System.out.println("ID A getType "+ this.getType());
         //System.out.println("DATOS DEL REQUEST "+ this.getData());        
-        
+        civilWorkConcept.setAdClientId(this);
         civilWorkConcept.setCode(this.getCode());
         civilWorkConcept.setName(this.getName());
         civilWorkConcept.setType(this.getType());
@@ -191,6 +190,21 @@ public void setServletRequest(HttpServletRequest servletRequest) {
      */
     public void setCode(String code) {
         this.code = code;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setServletResponse(HttpServletResponse hsr) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     }
