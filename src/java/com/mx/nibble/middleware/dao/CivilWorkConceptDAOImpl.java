@@ -82,10 +82,10 @@ public class CivilWorkConceptDAOImpl implements CivilWorkConceptDAO {
 
     @Override
     public long findMaxId() {
-        //CCivilWorkConcept maxId = null;
+        CCivilWorkConcept maxId = null;
         String SQL_QUERY = "SELECT MAX(civilWorkConceptId AS LONG) FROM CCivilWorkConcept";
         try {
-            CCivilWorkConcept maxId = 
+            maxId = 
             (CCivilWorkConcept) session.createCriteria(CCivilWorkConcept.class)
             .addOrder(Order.desc("civilWorkConceptId"))
             .setMaxResults(1)
