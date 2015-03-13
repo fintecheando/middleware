@@ -70,9 +70,10 @@ public class CivilWorkConceptDAOImpl implements CivilWorkConceptDAO {
 	}
 
     @Override
-    public void deleteCivilWorkConcept(CCivilWorkConcept civilWorkConcept) {
+    public void deleteCivilWorkConcept(long civilWorkConceptId) {
+            CCivilWorkConcept civilWorkConcept1 = null;
 		try {
-			CCivilWorkConcept civilWorkConcept1 = (CCivilWorkConcept) session.get(CCivilWorkConcept.class, civilWorkConcept.getCCivilWorkConceptId());
+			civilWorkConcept1 = (CCivilWorkConcept) session.get(CCivilWorkConcept.class, civilWorkConceptId);
 			session.delete(civilWorkConcept1);
 		} catch (Exception e) {
 			transaction.rollback();

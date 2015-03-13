@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface CivilWorkConceptDAO {
         public void saveOrUpdateCivilWorkConcept(CCivilWorkConcept civilWorkConcept); 
-        public void deleteCivilWorkConcept(CCivilWorkConcept civilWorkConcept);
+        public void deleteCivilWorkConcept(long civilWorkConceptId);
         
         public List<CCivilWorkConcept> listCivilWorkConcept();                
         public CCivilWorkConcept listCivilWorkConceptById(Long civilWorkConceptId);

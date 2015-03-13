@@ -25,40 +25,31 @@ import org.slf4j.LoggerFactory;
  *
  * @author victor
  */
-public class CCivilWorkConceptJSONAction extends ActionSupport implements
-        SessionAware {
+public class CCivilWorkConceptJSONAction extends ActionSupport implements SessionAware {
+    
+    Logger logger = LoggerFactory.getLogger(CCivilWorkConceptJSONAction.class);
 
-
-/**
-*
-*/
-private static final long serialVersionUID = 1L;
-private CCivilWorkConcept civilWorkConcept = null;
-private List<CCivilWorkConcept> civilWorkConcepts = null;
-private CivilWorkConceptDAO civilWorkConceptDao = new CivilWorkConceptDAOImpl();
-private boolean success;
-private String message;
-private long CCivilWorkConceptId;
-private String name;
-private String type;
-private String code;
-private String id;
-
-private Map session;
-private HttpServletRequest request;
-private HttpServletResponse response;
-Logger logger = LoggerFactory.getLogger(CCivilWorkConceptJSONAction.class);
-//private List<CCivilWorkConcept> data;
-
+    private static final long serialVersionUID = 1L;
+    private CCivilWorkConcept civilWorkConcept = null;
+    private List<CCivilWorkConcept> civilWorkConcepts = null;
+    private CivilWorkConceptDAO civilWorkConceptDao = new CivilWorkConceptDAOImpl();
+    private boolean success;
+    private String message;
+    private long CCivilWorkConceptId;
+    private String name;
+    private String type;
+    private String code;
+    private String id;
+    private Map session;
+    private HttpServletRequest request;
+    private HttpServletResponse response;
 
     public String list() {        
         try{
             setCivilWorkConcepts(civilWorkConceptDao.listCivilWorkConcept());
-            setSuccess(true); //Se utiliza para indicar si la operación fue exitosa en este caso el valor por default es TRUE
-            
+            setSuccess(true); //Se utiliza para indicar si la operación fue exitosa en este caso el valor por default es TRUE            
             this.setSuccess(true);
-            this.setMessage("Display records");
-        
+            this.setMessage("Display records");        
         }
         catch (Exception e){
             e.printStackTrace();
@@ -68,51 +59,48 @@ Logger logger = LoggerFactory.getLogger(CCivilWorkConceptJSONAction.class);
         return SUCCESS;
     }
     
-    public void save(){
-        
-        try{
-            
-        civilWorkConcept = new CCivilWorkConcept();
+    public void save(){        
+        try {            
+            civilWorkConcept = new CCivilWorkConcept();
            
-        logger.debug("ID A GUARDAR "+ this.getCCivilWorkConceptId());
-        logger.debug("ID A getCode "+ this.getCode());
-        logger.debug("ID A getName "+ this.getName());
-        logger.debug("ID A getType "+ this.getType());
-        
-        //System.out.println("DATOS DEL REQUEST "+ this.getData());  
-        
-        long ad_client_id = (Long)this.getSession().get("ad_client_id");
-        long ad_org_id = (Long)this.getSession().get("ad_org_id");
-        long ad_user_id = (Long)this.getSession().get("ad_user_id");
-        
-        logger.debug("ID A ad_client_id "+ ad_client_id);
-        logger.debug("ID A ad_org_id "+ ad_org_id);
-        logger.debug("ID A ad_user_id "+ ad_user_id);
-        
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        logger.debug(dateFormat.format(date));
-        
-        //Se trae el ultimo ID y se incrementa en una unidad
-        long id = civilWorkConceptDao.findMaxId() + 1;
-        
-        civilWorkConcept.setCCivilWorkConceptId(id);
-        civilWorkConcept.setAdClientId(ad_client_id);
-        civilWorkConcept.setAdOrgId(ad_org_id);
-        civilWorkConcept.setCreatedby(ad_user_id);
-        civilWorkConcept.setUpdatedby(ad_user_id);
-        civilWorkConcept.setCreated(date);
-        civilWorkConcept.setUpdated(date);
-        civilWorkConcept.setIsactive('Y');
-        civilWorkConcept.setCode(this.getCode());
-        civilWorkConcept.setName(this.getName());
-        civilWorkConcept.setType(this.getType());
-            
-        civilWorkConceptDao.saveOrUpdateCivilWorkConcept(civilWorkConcept);
-        
-        this.setSuccess(true);
-        this.setMessage("Created record!");
-        
+            logger.debug("ID A GUARDAR "+ this.getCCivilWorkConceptId());
+            logger.debug("ID A getCode "+ this.getCode());
+            logger.debug("ID A getName "+ this.getName());
+            logger.debug("ID A getType "+ this.getType());
+
+            //System.out.println("DATOS DEL REQUEST "+ this.getData());  
+
+            long ad_client_id = (Long)this.getSession().get("ad_client_id");
+            long ad_org_id = (Long)this.getSession().get("ad_org_id");
+            long ad_user_id = (Long)this.getSession().get("ad_user_id");
+
+            logger.debug("ID A ad_client_id "+ ad_client_id);
+            logger.debug("ID A ad_org_id "+ ad_org_id);
+            logger.debug("ID A ad_user_id "+ ad_user_id);
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            logger.debug(dateFormat.format(date));
+
+            //Se trae el ultimo ID y se incrementa en una unidad
+            long id = civilWorkConceptDao.findMaxId() + 1;
+
+            civilWorkConcept.setCCivilWorkConceptId(id);
+            civilWorkConcept.setAdClientId(ad_client_id);
+            civilWorkConcept.setAdOrgId(ad_org_id);
+            civilWorkConcept.setCreatedby(ad_user_id);
+            civilWorkConcept.setUpdatedby(ad_user_id);
+            civilWorkConcept.setCreated(date);
+            civilWorkConcept.setUpdated(date);
+            civilWorkConcept.setIsactive('Y');
+            civilWorkConcept.setCode(this.getCode());
+            civilWorkConcept.setName(this.getName());
+            civilWorkConcept.setType(this.getType());
+
+            civilWorkConceptDao.saveOrUpdateCivilWorkConcept(civilWorkConcept);
+
+            this.setSuccess(true);
+            this.setMessage("Created record!");        
         }
         catch (Exception e){
             e.printStackTrace();
@@ -121,51 +109,35 @@ Logger logger = LoggerFactory.getLogger(CCivilWorkConceptJSONAction.class);
         }
     }
     
-    public void update(){
-        
-        try{
+    public void update(){        
+        try{            
+            civilWorkConcept = new CCivilWorkConcept();
             
-        civilWorkConcept = new CCivilWorkConcept();
-           
-        logger.debug("ID A GUARDAR "+ this.getCCivilWorkConceptId());
-        logger.debug("ID A getCode "+ this.getCode());
-        logger.debug("ID A getName "+ this.getName());
-        logger.debug("ID A getType "+ this.getType());
-        
-        //System.out.println("DATOS DEL REQUEST "+ this.getData());  
-        
-        long ad_client_id = (Long)this.getSession().get("ad_client_id");
-        long ad_org_id = (Long)this.getSession().get("ad_org_id");
-        long ad_user_id = (Long)this.getSession().get("ad_user_id");
-        
-        logger.debug("ID A ad_client_id "+ ad_client_id);
-        logger.debug("ID A ad_org_id "+ ad_org_id);
-        logger.debug("ID A ad_user_id "+ ad_user_id);
-        
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        logger.debug(dateFormat.format(date));
-        
-        //Se trae el ultimo ID y se incrementa en una unidad
-        //long id = civilWorkConceptDao.findMaxId() + 1;
-        
-        civilWorkConcept.setCCivilWorkConceptId(this.getCCivilWorkConceptId());
-        //civilWorkConcept.setAdClientId(ad_client_id);
-        //civilWorkConcept.setAdOrgId(ad_org_id);
-        //civilWorkConcept.setCreatedby(ad_user_id);
-        civilWorkConcept.setUpdatedby(ad_user_id);
-        //civilWorkConcept.setCreated(date);
-        civilWorkConcept.setUpdated(date);
-        civilWorkConcept.setIsactive('Y');
-        civilWorkConcept.setCode(this.getCode());
-        civilWorkConcept.setName(this.getName());
-        civilWorkConcept.setType(this.getType());
+            civilWorkConcept = civilWorkConceptDao.listCivilWorkConceptById(new Long(this.getId().replace("Writer.CCivilWorkConcept-", "")));           
             
-        civilWorkConceptDao.saveOrUpdateCivilWorkConcept(civilWorkConcept);
-        
-        this.setSuccess(true);
-        this.setMessage("Updated record!");
-        
+            logger.debug("ID A ACTUALIZAR "+ this.getId().replace("Writer.CCivilWorkConcept-", ""));
+            logger.debug("ID A ACTUALIZAR "+this.getCCivilWorkConceptId());
+            logger.debug("ID A getCode "+ this.getCode());
+            logger.debug("ID A getName "+ this.getName());
+            logger.debug("ID A getType "+ this.getType());            
+            long ad_user_id = (Long)this.getSession().get("ad_user_id");
+            logger.debug("ID A ad_user_id "+ ad_user_id);
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            logger.debug(dateFormat.format(date));
+            //civilWorkConcept.setCCivilWorkConceptId(new Long(this.getId().replace("Writer.CCivilWorkConcept-", "")));            
+            civilWorkConcept.setUpdatedby(ad_user_id);
+            //civilWorkConcept.setCreated(date);
+            civilWorkConcept.setUpdated(date);            
+            if(this.getCode()!= null)
+                civilWorkConcept.setCode(this.getCode());
+            if(this.getName()!=null)
+                civilWorkConcept.setName(this.getName());
+            if(this.getType()!=null)
+                civilWorkConcept.setType(this.getType());
+            civilWorkConceptDao.saveOrUpdateCivilWorkConcept(civilWorkConcept);
+            this.setSuccess(true);
+            this.setMessage("Updated record!");        
         }
         catch (Exception e){
             e.printStackTrace();
@@ -174,53 +146,22 @@ Logger logger = LoggerFactory.getLogger(CCivilWorkConceptJSONAction.class);
         }
     }
     
-    public void delete(){  
-        
-        try{
-            
-        civilWorkConcept = new CCivilWorkConcept();
-           
-        logger.debug("ID A BORRAR "+ this.getId());
-        logger.debug("ID A getCode "+ this.getCode());
-        logger.debug("ID A getName "+ this.getName());
-        logger.debug("ID A getType "+ this.getType());
-        
-        //System.out.println("DATOS DEL REQUEST "+ this.getData());  
-       
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        logger.debug(dateFormat.format(date));
-        
-        //Se trae el ultimo ID y se incrementa en una unidad
-        //long id = civilWorkConceptDao.findMaxId() + 1;
-        
-        civilWorkConcept.setCCivilWorkConceptId(new Long(this.getId().replace("Writer.CCivilWorkConcept-", "")));
-        //civilWorkConcept.setCreated(date);
-        //civilWorkConcept.setUpdated(date);
-        //civilWorkConcept.setIsactive('Y');
-        //civilWorkConcept.setCode(this.getCode());
-        //civilWorkConcept.setName(this.getName());
-        //civilWorkConcept.setType(this.getType());
-            
-        civilWorkConceptDao.deleteCivilWorkConcept(civilWorkConcept);
-        
-        this.setSuccess(true);
-        this.setMessage("Deleted record!");
-        
+    public void delete(){
+        try {            
+            civilWorkConcept = new CCivilWorkConcept();           
+            logger.debug("ID A BORRAR "+ this.getId().replace("Writer.CCivilWorkConcept-", ""));
+            //civilWorkConcept.setCCivilWorkConceptId(new Long(this.getId().replace("Writer.CCivilWorkConcept-", "")));
+            civilWorkConceptDao.deleteCivilWorkConcept(new Long(this.getId().replace("Writer.CCivilWorkConcept-", "")).longValue());        
+            this.setSuccess(true);
+            this.setMessage("Deleted record!");        
         }
         catch (Exception e){
             e.printStackTrace();
             this.setSuccess(false);
             this.setMessage("Failed to delete record "+e.getMessage());
         }
-        
-        
-        
-        
     }
-
-   
-
+    
     /**
      * @param success the success to set
      */
