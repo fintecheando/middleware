@@ -289,8 +289,8 @@ Ext.onReady(function(){
             type: 'ajax',
             api: {
                 read: 'listAllCivilWorkConcepts.action',
-                create: 'saveOrUpdateCivilWorkConcepts.action',
-                update: 'saveOrUpdateCivilWorkConcepts.action',
+                create: 'saveCivilWorkConcepts.action',
+                update: 'updateCivilWorkConcepts.action',
                 destroy: 'deleteCivilWorkConcepts.action'
             },
             reader: {

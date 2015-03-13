@@ -11,6 +11,7 @@ import com.mx.nibble.domain.CCivilWorkConcept;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 /**
  *
@@ -78,5 +79,24 @@ public class CivilWorkConceptDAOImpl implements CivilWorkConceptDAO {
 			e.printStackTrace();
 		} 
 	}
+
+    @Override
+    public long findMaxId() {
+        //CCivilWorkConcept maxId = null;
+        String SQL_QUERY = "SELECT MAX(civilWorkConceptId AS LONG) FROM CCivilWorkConcept";
+        try {
+            CCivilWorkConcept maxId = 
+            (CCivilWorkConcept) session.createCriteria(CCivilWorkConcept.class)
+            .addOrder(Order.desc("civilWorkConceptId"))
+            .setMaxResults(1)
+            .uniqueResult();
+            System.out.println("Max ID: " + maxId.getCCivilWorkConceptId()); 
+	} catch (Exception e) {
+            e.printStackTrace();
+	}
+            return maxId.getCCivilWorkConceptId();
+	}
+
+   
 
 }
