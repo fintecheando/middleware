@@ -42,6 +42,8 @@ private long CCivilWorkConceptId;
 private String name;
 private String type;
 private String code;
+private String id;
+
 private Map session;
 private HttpServletRequest request;
 private HttpServletResponse response;
@@ -178,21 +180,13 @@ Logger logger = LoggerFactory.getLogger(CCivilWorkConceptJSONAction.class);
             
         civilWorkConcept = new CCivilWorkConcept();
            
-        logger.debug("ID A BORRAR "+ this.getCCivilWorkConceptId());
+        logger.debug("ID A BORRAR "+ this.getId());
         logger.debug("ID A getCode "+ this.getCode());
         logger.debug("ID A getName "+ this.getName());
         logger.debug("ID A getType "+ this.getType());
         
         //System.out.println("DATOS DEL REQUEST "+ this.getData());  
-        
-        long ad_client_id = (Long)this.getSession().get("ad_client_id");
-        long ad_org_id = (Long)this.getSession().get("ad_org_id");
-        long ad_user_id = (Long)this.getSession().get("ad_user_id");
-        
-        logger.debug("ID A ad_client_id "+ ad_client_id);
-        logger.debug("ID A ad_org_id "+ ad_org_id);
-        logger.debug("ID A ad_user_id "+ ad_user_id);
-        
+       
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         logger.debug(dateFormat.format(date));
@@ -200,11 +194,7 @@ Logger logger = LoggerFactory.getLogger(CCivilWorkConceptJSONAction.class);
         //Se trae el ultimo ID y se incrementa en una unidad
         //long id = civilWorkConceptDao.findMaxId() + 1;
         
-        civilWorkConcept.setCCivilWorkConceptId(this.getCCivilWorkConceptId());
-        civilWorkConcept.setAdClientId(ad_client_id);
-        civilWorkConcept.setAdOrgId(ad_org_id);
-        civilWorkConcept.setCreatedby(ad_user_id);
-        civilWorkConcept.setUpdatedby(ad_user_id);
+        civilWorkConcept.setCCivilWorkConceptId(new Long(this.getId().replace("Writer.CCivilWorkConcept-", "")));
         //civilWorkConcept.setCreated(date);
         //civilWorkConcept.setUpdated(date);
         //civilWorkConcept.setIsactive('Y');
@@ -383,6 +373,21 @@ Logger logger = LoggerFactory.getLogger(CCivilWorkConceptJSONAction.class);
      */
     public void setResponse(HttpServletResponse response) {
         this.response = response;
+    }
+
+    /**
+     * @return the id
+     */
+    public String getId() {
+        
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 
    

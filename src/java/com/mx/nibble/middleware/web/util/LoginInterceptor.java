@@ -1,9 +1,5 @@
 package com.mx.nibble.middleware.web.util;
 
-import com.mx.nibble.domain.AdClient;
-import com.mx.nibble.domain.AdOrg;
-import com.mx.nibble.middleware.dao.admin.AdClientDAOImpl;
-import com.mx.nibble.middleware.dao.admin.AdOrgDAOImpl;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,8 +11,6 @@ import org.apache.struts2.StrutsStatics;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.commons.lang.StringUtils;
 
 public class LoginInterceptor extends AbstractInterceptor implements

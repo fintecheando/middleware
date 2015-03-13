@@ -70,10 +70,10 @@ public class CivilWorkConceptDAOImpl implements CivilWorkConceptDAO {
 	}
 
     @Override
-    public void deleteCivilWorkConcept(CCivilWorkConcept civilWorkConceptId) {
+    public void deleteCivilWorkConcept(CCivilWorkConcept civilWorkConcept) {
 		try {
-			CCivilWorkConcept civilWorkConcept = (CCivilWorkConcept) session.get(CCivilWorkConcept.class, civilWorkConceptId);
-			session.delete(civilWorkConcept);
+			CCivilWorkConcept civilWorkConcept1 = (CCivilWorkConcept) session.get(CCivilWorkConcept.class, civilWorkConcept.getCCivilWorkConceptId());
+			session.delete(civilWorkConcept1);
 		} catch (Exception e) {
 			transaction.rollback();
 			e.printStackTrace();
@@ -82,8 +82,7 @@ public class CivilWorkConceptDAOImpl implements CivilWorkConceptDAO {
 
     @Override
     public long findMaxId() {
-        CCivilWorkConcept maxId = null;
-        String SQL_QUERY = "SELECT MAX(civilWorkConceptId AS LONG) FROM CCivilWorkConcept";
+        CCivilWorkConcept maxId = null;        
         try {
             maxId = 
             (CCivilWorkConcept) session.createCriteria(CCivilWorkConcept.class)
@@ -96,7 +95,5 @@ public class CivilWorkConceptDAOImpl implements CivilWorkConceptDAO {
 	}
             return maxId.getCCivilWorkConceptId();
 	}
-
-   
 
 }
