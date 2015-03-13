@@ -87,7 +87,7 @@ public class CivilWorkConceptDAOImpl implements CivilWorkConceptDAO {
         try {
             maxId = 
             (CCivilWorkConcept) session.createCriteria(CCivilWorkConcept.class)
-            .addOrder(Order.desc("civilWorkConceptId"))
+            .addOrder(Order.desc("CCivilWorkConceptId"))
             .setMaxResults(1)
             .uniqueResult();
             System.out.println("Max ID: " + maxId.getCCivilWorkConceptId()); 
