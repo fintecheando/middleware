@@ -16,11 +16,9 @@
     <script type="text/javascript" src="sencha/shared/examples.js"></script>
 
     <!-- page specific -->
-    
     <script type="text/javascript" src="sencha/pages/CivilWorkConcept.js"></script> 
 </head>
 <body>    
     <div id="binding-example"></div>
 </body>
 </html>
-
