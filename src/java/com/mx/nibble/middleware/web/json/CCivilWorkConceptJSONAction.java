@@ -114,7 +114,8 @@ public class CCivilWorkConceptJSONAction extends ActionSupport implements Sessio
             civilWorkConcept = new CCivilWorkConcept();
             
             civilWorkConcept = civilWorkConceptDao.listCivilWorkConceptById(new Long(this.getId().replace("Writer.CCivilWorkConcept-", "")));           
-            
+            if(civilWorkConcept == null)
+                
             logger.debug("ID A ACTUALIZAR "+ this.getId().replace("Writer.CCivilWorkConcept-", ""));
             logger.debug("ID A ACTUALIZAR "+this.getCCivilWorkConceptId());
             logger.debug("ID A getCode "+ this.getCode());

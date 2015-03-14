@@ -64,10 +64,6 @@
                     <result name="logout">login.jsp</result>
                 </action>
                 
-            
-                
-                
-                
                 <action name="fileImport" class="com.mx.nibble.middleware.web.util.FilePreUpload" method="display">
                     <result name="none">upload/upload.jsp</result>
                 </action>
