@@ -16,8 +16,6 @@
     <script type="text/javascript" src="sencha/pages/ListProjects.js"></script>
 </head>
 <body>
-    <h1>Grid with Filtered and Buffered Store</h1>
-    <p>A buffered rendered grid with a filtering UI is included which applies a remote filter and reloads the grid beginning at page one.</p>
-    <p>The code is not minified, see <a href="filtered-buffered-store.js">filtered-buffered-store.js</a></p>
+    
 </body>
 </html>

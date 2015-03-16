@@ -103,19 +103,21 @@
                 <action name="listProjects" class="com.mx.nibble.middleware.web.ListProjectAction">
                     <result name="success">obra/ListProjects.jsp</result>
                 </action>
-                <action name="listAllProjects" method="list" class="com.mx.nibble.middleware.web.json.CCivilWorkConceptJSONAction">
-                    <result type="json" />
+                <action name="listAllProjects" method="list" class="com.mx.nibble.middleware.web.json.ListProjectsJSONAction">
+                    <result type="json">
+                        <param name="callbackParameter">callback</param>
+                    </result>
                 </action >
                 
                 <!-- Projects IDEM-->
                 <action name="financeReport" class="com.mx.nibble.middleware.web.FinanceReportAction">
                     <result name="success">obra/financeReport.jsp</result>
                 </action>
-                
+                <!-- Projects IDEM
                  <action name="listAllCProjects" method="list" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
                     <result type="json" />
                 </action >
-               
+               -->
                     
                 
 	</package>

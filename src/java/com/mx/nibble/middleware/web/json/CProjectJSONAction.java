@@ -27,21 +27,18 @@ private static final long serialVersionUID = 1L;
 private List<CProject> projects = null;
 private ProjectDAO projecsDao = new ProjectDAOImpl();
 private boolean success;
+private int totalCount;
 
     public String list() {
-        this.setProjects(projecsDao.listProjects());
-        setSuccess(true); //Se utiliza para indicar si la operación fue exitosa en este caso el valor por default es TRUE
+        this.setProjects(projecsDao.listProjects());        
+        this.setTotalCount(projecsDao.listProjects().size());
+        this.setSuccess(true); //Se utiliza para indicar si la operación fue exitosa en este caso el valor por default es TRUE
         return SUCCESS;
     }
 
    
 
-    /**
-     * @param success the success to set
-     */
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
+    
 
     /**
      * @return the projects
@@ -55,6 +52,34 @@ private boolean success;
      */
     public void setProjects(List<CProject> projects) {
         this.projects = projects;
+    }
+
+    /**
+     * @return the totalCount
+     */
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    /**
+     * @param totalCount the totalCount to set
+     */
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    /**
+     * @return the success
+     */
+    public boolean isSuccess() {
+        return success;
+    }
+
+    /**
+     * @param success the success to set
+     */
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
    

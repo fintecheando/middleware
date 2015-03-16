@@ -12,6 +12,7 @@ import java.util.List;
 public interface ProjectDAO {
         public void saveOrUpdate(CProject project);        
         public List<CProject> searchByProjectName(String projectName);        
+        public List<CProject> searchByProjectNameOrDescription(String nameOrDescription);        
         public List<CProject> listProjects();        
         public Long maxProjectId();        
 }

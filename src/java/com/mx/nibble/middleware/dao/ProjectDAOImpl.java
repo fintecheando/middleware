@@ -92,4 +92,24 @@ public class ProjectDAOImpl implements ProjectDAO{
                         }                                
                         return list;
                 }
+
+    @Override
+    public List<CProject> searchByProjectNameOrDescription(String nameOrDescription) {
+        List<CProject> list  = null;
+                        try {    
+                            if (this.session == null) {
+                                logger.error("Sesion a DB nula");
+                              }
+                            logger.debug("SE BUSCA PROYECTO "+nameOrDescription);
+                                //Session session = factory.openSession();
+                                Query query = session.createQuery("FROM CProject "
+                                        + "WHERE name LIKE :nameOrDescription "
+                                        + "OR description LIKE :nameOrDescription ");
+                                query.setParameter("nameOrDescription", "%"+nameOrDescription+"%");
+                                list  = query.list();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }                                
+                        return list;
+    }
 }

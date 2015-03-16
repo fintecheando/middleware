@@ -9,39 +9,23 @@ Ext.require([
 ]);
 
 Ext.onReady(function(){
-    Ext.define('ForumThread', {
+    Ext.define('ListProject', {
         extend: 'Ext.data.Model',
         fields: [{
-            name: 'title',
-            mapping: 'topic_title'
+            name: 'name',
+            mapping: 'name'
         }, {
-            name: 'forumtitle',
-            mapping: 'forum_title'
-        }, {
-            name: 'forumid',
-            type: 'int'
-        }, {
-            name: 'username',
-            mapping: 'author'
-        }, {
-                name: 'replycount', 
-                mapping: 'reply_count',
-                type: 'int'
-        }, {
-                name: 'lastpost', 
-                mapping: 'post_time', 
-                type: 'date', 
-                dateFormat: 'timestamp'
-        },
-            'lastposter', 'excerpt', 'topic_id'
+            name: 'description',
+            mapping: 'description'
+        }
         ],
-        idProperty: 'post_id'
+        idProperty: 'CProjectId'
     });
 
     // create the Data Store
     var store = Ext.create('Ext.data.BufferedStore', {
         id: 'store',
-        model: 'ForumThread',
+        model: 'ListProject',
         
         // The topics-remote.php script appears to be hardcoded to use 50, and ignores this parameter, so we
         // are forced to use 50 here instead of a possibly more efficient value.
@@ -53,9 +37,9 @@ Ext.onReady(function(){
             // load using script tags for cross domain, if the data in on the same domain as
             // this page, an HttpProxy would be better
             type: 'jsonp',
-            url: 'http://www.sencha.com/forum/topics-remote.php',
+            url: 'listAllProjects.action',
             reader: {
-                rootProperty: 'topics',
+                rootProperty: 'projects',
                 totalProperty: 'totalCount'
             },
             // sends single sort as multi parameter
@@ -82,7 +66,7 @@ Ext.onReady(function(){
 
     function renderTopic(value, p, record) {
         return Ext.String.format(
-            '<a href="http://sencha.com/forum/showthread.php?p={1}" target="_blank">{0}</a>',
+            '<a href="ProjectDetailedReport.action?CProjectId={1}" target="_blank">{0}</a>',
             value,
             record.getId()
         );
@@ -91,8 +75,8 @@ Ext.onReady(function(){
     var grid = Ext.create('Ext.grid.Panel', {
         width: 700,
         height: 470,
-        collapsible: true,
-        title: 'ExtJS.com - Browse Forums',
+        collapsible: false,
+        title: 'Proyectos',
         store: store,
         loadMask: true,
         dockedItems: [{
@@ -100,14 +84,14 @@ Ext.onReady(function(){
             xtype: 'toolbar',
             items: [{
                 width: 400,
-                fieldLabel: 'Search',
+                fieldLabel: 'Buscar',
                 labelWidth: 50,
                 xtype: 'searchfield',
                 store: store
             }, '->', {
                 xtype: 'component',
                 itemId: 'status',
-                tpl: 'Matching threads: {count}',
+                tpl: 'Elementos encontrados: {count}',
                 style: 'margin-right:5px'
             }]
         }],
@@ -126,29 +110,16 @@ Ext.onReady(function(){
             sortable: false
         },{
             tdCls: 'x-grid-cell-topic',
-            text: "Topic",
-            dataIndex: 'title',
+            text: "Nombre",
+            dataIndex: 'name',
             flex: 1,
             renderer: renderTopic,
             sortable: false
         },{
-            text: "Author",
-            dataIndex: 'username',
-            width: 100,
-            hidden: true,
-            sortable: false
-        },{
-            text: "Replies",
-            dataIndex: 'replycount',
-            align: 'center',
-            width: 70,
-            sortable: false
-        },{
-            id: 'last',
-            text: "Last Post",
-            dataIndex: 'lastpost',
-            width: 130,
-            renderer: Ext.util.Format.dateRenderer('n/j/Y g:i A'),
+            text: "Descripcion",
+            dataIndex: 'description',
+            align: 'left',
+            width: 300,
             sortable: false
         }],
         renderTo: Ext.getBody()
