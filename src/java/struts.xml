@@ -82,13 +82,6 @@
                     <result name ="error">upload/status.jsp</result>
                 </action >
                 
-                <action name="financeReport" class="com.mx.nibble.middleware.web.FinanceReportAction">
-                    <result name="success">financeReport.jsp</result>
-                </action>
-                
-                 <action name="listAllCProjects" method="list" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
-                    <result type="json" />
-                </action >
                 <!-- Civil Work Concepts-->
                 <action name="civilWorkConcept" class="com.mx.nibble.middleware.web.CivilWorkConceptAction">
                     <result name="success">obra/CivilWorkConcept.jsp</result>
@@ -105,5 +98,25 @@
                <action name="updateCivilWorkConcepts" method="update" class="com.mx.nibble.middleware.web.json.CCivilWorkConceptJSONAction">                    
                     <result type="json"/>                    
                 </action >
+                
+                <!-- Projects -->
+                <action name="listProjects" class="com.mx.nibble.middleware.web.ListProjectAction">
+                    <result name="success">obra/ListProjects.jsp</result>
+                </action>
+                <action name="listAllProjects" method="list" class="com.mx.nibble.middleware.web.json.CCivilWorkConceptJSONAction">
+                    <result type="json" />
+                </action >
+                
+                <!-- Projects IDEM-->
+                <action name="financeReport" class="com.mx.nibble.middleware.web.FinanceReportAction">
+                    <result name="success">obra/financeReport.jsp</result>
+                </action>
+                
+                 <action name="listAllCProjects" method="list" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
+                    <result type="json" />
+                </action >
+               
+                    
+                
 	</package>
 </struts>
