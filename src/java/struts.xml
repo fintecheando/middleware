@@ -112,13 +112,16 @@
                 <!-- Projects IDEM-->
                 <action name="financeReport" class="com.mx.nibble.middleware.web.FinanceReportAction">
                     <result name="success">obra/financeReport.jsp</result>
-                </action>
-                <!-- Projects IDEM
+                </action>                
                  <action name="listAllCProjects" method="list" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
                     <result type="json" />
                 </action >
-               -->
-                    
+                
+                <action name="projectDetailedReport" class="com.mx.nibble.middleware.web.ProjectDetailedReportAction">
+                    <result name="success">obra/ProjectDetailedReport.jsp</result>
+                </action>                
+                 
+                
                 
 	</package>
 </struts>

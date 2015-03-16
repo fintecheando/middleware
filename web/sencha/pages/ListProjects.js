@@ -66,7 +66,7 @@ Ext.onReady(function(){
 
     function renderTopic(value, p, record) {
         return Ext.String.format(
-            '<a href="ProjectDetailedReport.action?CProjectId={1}" target="_blank">{0}</a>',
+            '<a href="projectDetailedReport.action?CProjectId={1}" >{0}</a>',
             value,
             record.getId()
         );
