@@ -7,15 +7,15 @@
     <title>Grid with Filtered and Buffered Store</title>
 
     <link rel="stylesheet" type="text/css" href="sencha/shared/example.css" />
-
-    <!-- GC -->
-
+    
+    
     <script type="text/javascript" src="sencha/shared/include-ext.js"></script>
+    <script type="text/javascript" src="sencha/packages/sencha-charts/build/sencha-charts.js"></script>
     <script type="text/javascript" src="sencha/shared/options-toolbar.js"></script>
-
+    
     <script type="text/javascript" src="sencha/pages/ProjectDetailedReport.js"></script>
 </head>
-<body>
-    
-</body>
+<body >
+       
+    </body>
 </html>
