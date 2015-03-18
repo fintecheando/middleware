@@ -66,7 +66,7 @@ public class LoadProjectTaskDAOImpl implements LoadProjectTaskDAO {
                                 ptask.setQty(Double.parseDouble(qty.get()));
                                 ptask.setUnitarycost(Double.parseDouble(unitarycost.get()));
                                 ptask.setKey(key.get().trim());
-                                ptask.setName(substr(name.get().trim(),255));
+                                ptask.setName(substr(name.get().trim(),255).toUpperCase());
                                 ptask.setTaskPrefixId(Double.parseDouble(taskprefixid.get()));
                                 ptask.setPlannedamt(Double.parseDouble(plannedamt.get()));
                                 projecttasks.add(ptask);
