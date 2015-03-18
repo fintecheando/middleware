@@ -1,59 +1,71 @@
 Ext.require([
     'Ext.grid.*',
     'Ext.data.*',
+    'Ext.draw.*',
     'Ext.chart.*',
     'Ext.panel.*',
     'Ext.layout.container.Border'
 ]);
 
 Ext.onReady(function(){    
+    
+    var myDataStore = Ext.create('Ext.data.JsonStore', {
+            fields: ['os', 'data1' ],
+            data: [
+                { os: 'Android', data1: 68.3 },
+                { os: 'iOS', data1: 17.9 },
+                { os: 'Windows Phone', data1: 10.2 },
+                { os: 'BlackBerry', data1: 1.7 },
+                { os: 'Others', data1: 1.9 }
+            ]
+        });
 
     Ext.create('Ext.Container', {
     renderTo: Ext.getBody(),
-    width: 600,
-    height: 400,
+    width: 500,
+    height: 500,
     layout: 'fit',
-    items: {
-        xtype: 'cartesian',
-        store: {
-          fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5'],
-          data: [
-              {'name': 'metric one', 'data1': 10, 'data2': 12, 'data3': 14, 'data4': 8, 'data5': 13},
-              {'name': 'metric two', 'data1': 7, 'data2': 8, 'data3': 16, 'data4': 10, 'data5': 3},
-              {'name': 'metric three', 'data1': 5, 'data2': 2, 'data3': 14, 'data4': 12, 'data5': 7},
-              {'name': 'metric four', 'data1': 2, 'data2': 14, 'data3': 6, 'data4': 1, 'data5': 23},
-              {'name': 'metric five', 'data1': 27, 'data2': 38, 'data3': 36, 'data4': 13, 'data5': 33}
-          ]
-        },
-        axes: [{
-            type: 'numeric',
-            position: 'left',
-            fields: ['data1'],
-            title: {
-                text: 'Sample Values',
-                fontSize: 15
+    items: [
+        {
+            xtype: 'polar',
+            store: {
+                fields: ['name', 'g1', 'g2'],
+                data: [
+                    {"name": "Item-0", "g1": 18.34,"g2": 0.04},
+                    {"name": "Item-1", "g1": 2.67, "g2": 14.87},
+                    {"name": "Item-2", "g1": 1.90, "g2": 5.72},
+                    {"name": "Item-3", "g1": 21.37,"g2": 2.13},
+                    {"name": "Item-4", "g1": 2.67, "g2": 8.53},
+                    {"name": "Item-5", "g1": 18.22,"g2": 4.62}
+                ]
             },
-            grid: true,
-            minimum: 0
-        }, {
-            type: 'category',
-            position: 'bottom',
-            fields: ['name'],
-            title: {
-                text: 'Sample Values',
-                fontSize: 15
-            }
-        }],
-        series: {
-            type: 'area',
-            subStyle: {
-                fill: ['blue', 'green', 'red']
+
+            interactions: ['rotate'],
+
+            //configure the legend.
+            legend: {
+                docked: 'bottom'
             },
-            xField: 'name',
-            yField: ['data1', 'data2', 'data3']
+
+            //describe the actual pie series.
+            series: [
+                {
+                    type: 'pie',
+                    xField: 'g1',
+                    label: {
+                        field: 'name',
+                        display: 'rotate'
+                    },
+                    donut: 25,
+                    style: {
+                        miterLimit: 10,
+                        lineCap: 'miter',
+                        lineWidth: 2
+                    }
+                }
+            ]
         }
-    }
+    ]
 });
 
-    
 });
