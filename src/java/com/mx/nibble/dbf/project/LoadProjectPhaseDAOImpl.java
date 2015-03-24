@@ -70,9 +70,9 @@ public class LoadProjectPhaseDAOImpl implements LoadProjectPhaseDAO{
                     currentElement.setLevel(Byte.valueOf(level.get().trim()));
                     currentElement.setSign(sign.get().replace("'","").trim().substring(0,0));
                     currentElement.setKey(substr(key.get().replace("'","").replace("|",".").trim(),30));
-                    currentElement.setName(substr(key.get().replace("'","").replace("|",".").trim() + description.get().replace("'","").trim(),60));
-                    currentElement.setDescription(substr(description.get().replace("'","").trim(),255));
-                    currentElement.setUnit(substr(unit.get().replace("'","").trim(),7));
+                    currentElement.setName(substr(key.get().replace("'","").replace("|",".").trim() + description.get().replace("'","").trim(),60).toUpperCase());
+                    currentElement.setDescription(substr(description.get().replace("'","").trim(),255).toUpperCase());
+                    currentElement.setUnit(substr(unit.get().replace("'","").trim(),7).toUpperCase());
                     currentElement.setSeqno(Long.parseLong(uniqueid.get().replace("'","").trim()));
                     currentElement.setQty(new BigDecimal(quantity.get().trim()));
                     currentElement.setPlannedamt(new BigDecimal(totalamt.get().trim()));

@@ -75,15 +75,15 @@ import org.xBaseJ.xBaseJException;
             {                
                 classDB.read();
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");                
-                project.setProjectName(projectName.get().trim());
+                project.setProjectName(projectName.get().trim().toUpperCase());
                 project.setTender(tender.get().trim());
                 if (dateTender.get() == null){ project.setDateTender(formatter.parse(dateTender.get()));}
-                project.setDescripcion(description.get().trim());
-                project.setLocation(location.get().trim());
+                project.setDescripcion(description.get().trim().toUpperCase());
+                project.setLocation(location.get().trim().toUpperCase());
                 project.setPlannedAmt(Double.parseDouble(plannedamt.get()));
                 project.setDateContract(formatter.parse(dateContract.get()));
                 project.setDateFinish(formatter.parse(dateFinish.get()));
-                project.setNote(note.get());
+                project.setNote(note.get().toUpperCase());
             }                  
             
         } catch(Exception e){
