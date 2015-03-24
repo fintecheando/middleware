@@ -117,11 +117,16 @@
                     <result type="json" />
                 </action >
                 
-                <action name="projectDetailedReport" class="com.mx.nibble.middleware.web.ProjectDetailedReportAction">
+                <action name="projectDetailedReport" class="com.mx.nibble.middleware.web.ProjectDetailedReportAction">                    
                     <result name="success">obra/ProjectDetailedReport.jsp</result>
                 </action>                
-                 
+                <action name="findProject" method="find" class="com.mx.nibble.middleware.web.json.CProjectJSONAction">
+                    <result type="json" />
+                </action >
                 
+                <action name="USCities" class="com.mx.nibble.middleware.web.json.USCities">
+                    <result type="json" />
+                </action >
                 
 	</package>
 </struts>

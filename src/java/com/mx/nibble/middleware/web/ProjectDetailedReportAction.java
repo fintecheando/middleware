@@ -14,7 +14,12 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class ProjectDetailedReportAction extends ActionSupport{
  
+    
 	public String execute() {
+                
 		return SUCCESS;
 	}
+
+    
+
 }

@@ -112,4 +112,40 @@ public class ProjectDAOImpl implements ProjectDAO{
                         }                                
                         return list;
     }
+
+    @Override
+    public CProject searchByProjectId(long projectId) {
+        CProject project  = null;
+        try {    
+            if (this.session == null) {
+                logger.error("Sesion a DB nula");
+              }
+            logger.debug("SE BUSCA PROYECTO "+projectId);
+                //Session session = factory.openSession();
+                Query query = session.createQuery("FROM CProject WHERE CProjectId = :id");
+                query.setParameter("id", projectId);
+                project  = (CProject) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }                                
+        return project;
+    }
+
+    @Override
+    public CProject searchResumeByProjectId(long projectId) {
+        CProject project  = null;
+        try {    
+            if (this.session == null) {
+                logger.error("Sesion a DB nula");
+              }
+            logger.debug("SE BUSCA PROYECTO "+projectId);
+                //Session session = factory.openSession();
+                Query query = session.createQuery("FROM CProject WHERE CProjectId = :id");
+                query.setParameter("id", projectId);
+                project  = (CProject) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }                                
+        return project;
+    }
 }

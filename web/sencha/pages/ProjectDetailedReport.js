@@ -7,60 +7,76 @@ Ext.require([
     'Ext.layout.container.Border'
 ]);
 
-Ext.onReady(function(){    
     
-    var myDataStore = Ext.create('Ext.data.JsonStore', {
-            fields: ['os', 'data1' ],
-            data: [
-                { os: 'Android', data1: 68.3 },
-                { os: 'iOS', data1: 17.9 },
-                { os: 'Windows Phone', data1: 10.2 },
-                { os: 'BlackBerry', data1: 1.7 },
-                { os: 'Others', data1: 1.9 }
-            ]
-        });
 
+Ext.onReady(function(){   
+    
+    // Set up a model to use in our Store
+ Ext.define('User', {
+     extend: 'Ext.data.Model',
+     fields: [
+         {name: 'name', type: 'string'},         
+         {name: 'plannedamt',       type: 'int'},
+         {name: 'committedamt',       type: 'int'}
+     ]
+ });
+
+ var myStore = Ext.create('Ext.data.Store', {
+     model: 'User',
+     proxy: {
+            type: 'ajax',
+            url: 'findProject.action?CProjectId=102',
+            reader: {
+                type: 'json',                
+                rootProperty: 'project'
+            }
+        },        
+        //alternatively, a Ext.data.Model name can be given (see Ext.data.Store for an example)
+        fields: ['name', 'plannedamt','committedamt'],
+     autoLoad: true
+ });
+    
     Ext.create('Ext.Container', {
     renderTo: Ext.getBody(),
-    width: 500,
-    height: 500,
+    width:500,
+    height:500,
     layout: 'fit',
     items: [
         {
-            xtype: 'polar',
-            store: {
-                fields: ['name', 'g1', 'g2'],
-                data: [
-                    {"name": "Item-0", "g1": 18.34,"g2": 0.04},
-                    {"name": "Item-1", "g1": 2.67, "g2": 14.87},
-                    {"name": "Item-2", "g1": 1.90, "g2": 5.72},
-                    {"name": "Item-3", "g1": 21.37,"g2": 2.13},
-                    {"name": "Item-4", "g1": 2.67, "g2": 8.53},
-                    {"name": "Item-5", "g1": 18.22,"g2": 4.62}
-                ]
-            },
+            xtype: 'chart',
+            flipXY: true,
+            store: myStore,  
 
-            interactions: ['rotate'],
-
-            //configure the legend.
+            //set legend configuration
             legend: {
-                docked: 'bottom'
+                docked: 'right'
             },
 
-            //describe the actual pie series.
+            //define the x and y-axis configuration.
+            axes: [
+                {
+                    type: 'numeric',
+                    position: 'bottom',
+                    grid: true,
+                    minimum: 0
+                },
+                {
+                    type: 'category',
+                    position: 'left'
+                }
+            ],
+
+            //define the actual bar series.
             series: [
                 {
-                    type: 'pie',
-                    xField: 'g1',
-                    label: {
-                        field: 'name',
-                        display: 'rotate'
-                    },
-                    donut: 25,
-                    style: {
-                        miterLimit: 10,
-                        lineCap: 'miter',
-                        lineWidth: 2
+                    type: 'bar',
+                    xField: 'name',
+                    yField: ['plannedamt', 'committedamt'],
+                    axis: 'bottom',
+                    // Cycles the green and blue fill mode over 2008 and 2009
+                    // subStyle parameters also override style parameters
+                    subStyle: {
+                        fill: ["#115fa6", "#94ae0a"]
                     }
                 }
             ]
