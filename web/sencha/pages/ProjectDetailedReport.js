@@ -58,11 +58,14 @@ Ext.onReady(function(){
                     type: 'numeric',
                     position: 'bottom',
                     grid: true,
+                    title: 'Presupuesto',
                     minimum: 0
+                    
                 },
                 {
                     type: 'category',
-                    position: 'left'
+                    position: 'left',
+                    title: 'Obra'
                 }
             ],
 
@@ -72,6 +75,7 @@ Ext.onReady(function(){
                     type: 'bar',
                     xField: 'name',
                     yField: ['plannedamt', 'committedamt'],
+                    title: ['Presupuestado', 'Ejercido'],
                     axis: 'bottom',
                     // Cycles the green and blue fill mode over 2008 and 2009
                     // subStyle parameters also override style parameters
