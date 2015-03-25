@@ -38,8 +38,8 @@ Ext.onReady(function(){
     
     Ext.create('Ext.Container', {
     renderTo: Ext.getBody(),
-    width:500,
-    height:500,
+    width:600,
+    height:1000,
     layout: 'fit',
     items: [
         {
