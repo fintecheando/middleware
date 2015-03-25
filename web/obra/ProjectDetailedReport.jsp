@@ -14,9 +14,6 @@
     <script type="text/javascript" src="sencha/packages/sencha-charts/build/sencha-charts.js"></script>
     
     <script type="text/javascript" src="sencha/shared/options-toolbar.js"></script>
-   
-    
-
     
     <script type="text/javascript">
         Ext.require([
@@ -27,12 +24,10 @@
             'Ext.panel.*',
             'Ext.layout.container.Border'
         ]);
-
-
-
+        
         Ext.onReady(function(){   
 
-            // Set up a model to use in our Store
+         // Set up a model to use in our Store
          Ext.define('User', {
              extend: 'Ext.data.Model',
              fields: [
@@ -112,7 +107,6 @@
         });
     </script>
 </head>
-<body >
-       
-    </body>
+<body >      
+</body>
 </html>
