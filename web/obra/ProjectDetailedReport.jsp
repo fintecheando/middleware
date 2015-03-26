@@ -54,8 +54,8 @@
 
             Ext.create('Ext.Container', {
             renderTo: Ext.getBody(),
-            width:600,
-            height:1000,
+            width:1000,
+            height:600,
             layout: 'fit',
             items: [
                 {
@@ -86,20 +86,25 @@
                     ],
 
                     //define the actual bar series.
-                    series: [
-                        {
-                            type: 'bar',
-                            xField: 'name',
-                            yField: ['plannedamt', 'committedamt'],
-                            title: ['Presupuestado', 'Ejercido'],
-                            axis: 'bottom',
-                            // Cycles the green and blue fill mode over 2008 and 2009
-                            // subStyle parameters also override style parameters
-                            subStyle: {
-                                fill: ["#115fa6", "#94ae0a"]
+                    series: {
+                        type: 'bar3d',
+                        stacked: false,
+                        title: ['Presupuestado', 'Ejercido'],
+                        xField: 'name',
+                        yField: ['plannedamt', 'committedamt'],
+                        label: {
+                            field: ['plannedamt', 'committedamt'],
+                            display: 'insideEnd',
+                            renderer: function (value) {
+                                return Ext.util.Format.number(value / 1000, '$0K');
                             }
+                        },
+                        highlight: true,
+                        style: {
+                            inGroupGapWidth: -7
                         }
-                    ]
+                    }
+                    
                 }
             ]
         });

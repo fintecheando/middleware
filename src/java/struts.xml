@@ -124,9 +124,6 @@
                     <result type="json" />
                 </action >
                 
-                <action name="USCities" class="com.mx.nibble.middleware.web.json.USCities">
-                    <result type="json" />
-                </action >
-                
+
 	</package>
 </struts>
